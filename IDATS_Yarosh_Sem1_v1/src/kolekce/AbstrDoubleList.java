@@ -66,7 +66,6 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
     @Override
     public void vlozNaslednika(T data) throws KolekceException, NullPointerException {
         isDataNull(data, "Data is null");
-        isEmptyListNPE("Empty list");
         isActualNull("Actual element is null");
         if (actual == tail) {
             vlozPosledni(data);
@@ -85,7 +84,6 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
     @Override
     public void vlozPredchudce(T data) throws KolekceException, NullPointerException {
         isDataNull(data, "Data is null");
-        isEmptyListNPE("Empty list");
         isActualNull("Actual element is null");
         if (actual == head) {
             vlozPrvni(data);
@@ -124,7 +122,6 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
 
     @Override
     public T zpristupniNaslednika() throws NoSuchElementException, KolekceException {
-        isEmptyListNSEE("Enmpty list");
         isActualNull("Actual element is null");
         if (actual.next == null) {
             throw new NoSuchElementException("Next element after actual is null");
@@ -135,7 +132,6 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
 
     @Override
     public T zpristupniPredchudce() throws NoSuchElementException, KolekceException {
-        isEmptyListNSEE("Enmpty list");
         isActualNull("Actual element is null");
         if (actual.prev == null) {
             throw new NoSuchElementException("Next element after actual is null");
@@ -193,9 +189,7 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
     public T odeberPosledni() throws KolekceException {
         isEmptyListKE("Empty list");
         if (tail == actual) {
-            if (tail.prev != null) {
-                actual = head;
-            }
+            actual = head;
         }
         if (head == tail) {
             T element = head.element;
