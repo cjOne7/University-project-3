@@ -144,24 +144,9 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
     public T odeberAktualni() throws KolekceException, NoSuchElementException {
         isEmptyListNSEE("Enmpty list");
         isActualNull("Actual element is null");
-        if (head == tail) {
-            T element = head.element;
-            zrus();
-            return element;
-        }
-        if (actual == head) {
-            return odeberPrvni();
-        }
-        if (actual == tail) {
-            return odeberPosledni();
-        } else {
-            T element = actual.element;
-            actual.prev.next = actual.next;
-            actual.next.prev = actual.prev;
-            actual = head;
-            size--;
-            return element;
-        }
+        final T element = actual.element;
+        unlink(actual);
+        return element;
     }
 
     @Override
@@ -172,49 +157,55 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
                 actual = head.next;
             }
         }
-        if (head == tail) {
-            T element = head.element;
-            zrus();
-            return element;
+        Node f = head;
+        final T element = head.element;
+        Node next = head.next;
+        f.element = null;
+        f.next = null;
+        head = next;
+        if (next == null) {
+            tail = null;
         } else {
-            T element = head.element;
-            head = head.next;
-            head.prev = null;
-            size--;
-            return element;
+            next.prev = null;
         }
+        size--;
+        return element;
     }
 
     @Override
     public T odeberPosledni() throws KolekceException {
         isEmptyListKE("Empty list");
         if (tail == actual) {
-            actual = head;
+            if (tail.prev != null) {
+                actual = tail.prev;
+            }
         }
-        if (head == tail) {
-            T element = head.element;
-            zrus();
-            return element;
+        Node l = tail;
+        final T element = l.element;
+        Node prev = tail.prev;
+        l.element = null;
+        l.prev = null;
+        tail = prev;
+        if (prev == null) {
+            head = null;
         } else {
-            T element = tail.element;
-            tail = tail.prev;
-            tail.next = null;
-            size--;
-            return element;
+            prev.next = null;
         }
+        size--;
+        return element;
     }
 
     @Override
     public T odeberNaslednika() throws KolekceException, NoSuchElementException {
         isEmptyListNSEE("Enmpty list");
         isActualNull("Actual element is null");
+        if (actual.next == null) {
+            throw new NoSuchElementException("Next element is null");
+        }
         if (head == tail) {
             T element = head.element;
             zrus();
             return element;
-        }
-        if (actual.next == null) {
-            throw new NoSuchElementException("Next element is null");
         }
         if (actual.next == tail) {
             return odeberPosledni();
@@ -231,13 +222,13 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
     public T odeberPredchudce() throws KolekceException, NoSuchElementException {
         isEmptyListNSEE("Enmpty list");
         isActualNull("Actual element is null");
+        if (actual.prev == null) {
+            throw new NoSuchElementException("Previous element is null");
+        }
         if (head == tail) {
             T element = head.element;
             zrus();
             return element;
-        }
-        if (actual.prev == null) {
-            throw new NoSuchElementException("Previous element is null");
         }
         if (actual.prev == head) {
             return odeberPrvni();
@@ -254,6 +245,7 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             Node currentNode = head;
+            Node deletedNode = null;
 
             @Override
             public boolean hasNext() {
@@ -266,21 +258,37 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
                     throw new NoSuchElementException("The list is ended");
                 }
                 T element = currentNode.element;
+                deletedNode = currentNode;
                 currentNode = currentNode.next;
                 return element;
             }
 
             @Override
             public void remove() {
-                Iterator.super.remove(); //To change body of generated methods, choose Tools | Templates.
+                unlink(deletedNode);
             }
         };
     }
 
-    private void isEmptyListNPE(final String message) {
-        if (jePrazdny()) {
-            throw new NullPointerException(message);
+    private void unlink(Node node) {
+        Node next = node.next;
+        Node prev = node.prev;
+
+        if (prev == null) {
+            head = next;
+        } else {
+            prev.next = next;
+            node.prev = null;
         }
+        if (next == null) {
+            tail = prev;
+        } else {
+            next.prev = prev;
+            node.next = null;
+        }
+        node.element = null;
+        actual = head;
+        size--;
     }
 
     private void isEmptyListNSEE(final String message) {
