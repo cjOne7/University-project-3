@@ -433,13 +433,43 @@ public class AbstrDoubleListTest {
     @Test
     public void testOdeberNaslednika4() {
         System.out.println("odeberNaslednika4");
-        Integer[] data = new Integer[]{10, 20, 30};
         AbstrDoubleList instance = new AbstrDoubleList();
         for (Integer data1 : data) {
             instance.vlozPosledni(data1);
         }
         instance.zpristupniPrvni();
         assertEquals(data[1], instance.odeberNaslednika());
+    }
+
+    @Test
+    public void testOdeberNaslednika5() {
+        System.out.println("odeberNaslednika5");
+        AbstrDoubleList instance = new AbstrDoubleList();
+        for (Integer data1 : data) {
+            instance.vlozPosledni(data1);
+        }
+        instance.zpristupniPrvni();
+        instance.odeberNaslednika();
+        instance.odeberNaslednika();
+        instance.odeberNaslednika();
+        instance.odeberNaslednika();
+        assertEquals(data[0], instance.zpristupniAktualni());
+    }
+    @Test
+    public void testOdeberNaslednika6() {
+        System.out.println("odeberNaslednika6");
+        AbstrDoubleList instance = new AbstrDoubleList();
+        for (Integer data1 : data) {
+            instance.vlozPosledni(data1);
+        }
+        instance.zpristupniPrvni();
+        instance.zpristupniNaslednika();
+        instance.zpristupniNaslednika();
+        instance.odeberNaslednika();
+        instance.odeberPredchudce();
+        instance.odeberNaslednika();
+        instance.odeberPredchudce();
+        assertEquals(data[2], instance.zpristupniAktualni());
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -482,6 +512,21 @@ public class AbstrDoubleListTest {
         }
         instance.zpristupniPosledni();
         assertEquals(data[3], instance.odeberPredchudce());
+    }
+
+    @Test
+    public void testOdeberPredchudce5() {
+        System.out.println("odeberPredchudce5");
+        AbstrDoubleList instance = new AbstrDoubleList();
+        for (Integer data1 : data) {
+            instance.vlozPosledni(data1);
+        }
+        instance.zpristupniPosledni();
+        instance.odeberPredchudce();
+        instance.odeberPredchudce();
+        instance.odeberPredchudce();
+        instance.odeberPredchudce();
+        assertEquals(data[4], instance.zpristupniAktualni());
     }
 
     @Test

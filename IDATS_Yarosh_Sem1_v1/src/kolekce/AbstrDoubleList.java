@@ -157,11 +157,10 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
                 actual = head.next;
             }
         }
-        Node f = head;
         final T element = head.element;
         Node next = head.next;
-        f.element = null;
-        f.next = null;
+        head.element = null;
+        head.next = null;
         head = next;
         if (next == null) {
             tail = null;
@@ -180,11 +179,10 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
                 actual = tail.prev;
             }
         }
-        Node l = tail;
-        final T element = l.element;
+        final T element = tail.element;
         Node prev = tail.prev;
-        l.element = null;
-        l.prev = null;
+        tail.element = null;
+        tail.prev = null;
         tail = prev;
         if (prev == null) {
             head = null;
@@ -216,6 +214,16 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
             size--;
             return element;
         }
+//        final T element = = actual.next.element;
+//        if (head.next == tail) {
+//            actual.next = null;
+//            tail = actual;
+//        } else {
+//            actual.next.next.prev = actual;
+//            actual.next = actual.next.next;
+//        }
+//        size--;
+//        return element;
     }
 
     @Override

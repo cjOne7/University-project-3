@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="LAPTOP-D0N3HEAH" name="kolekce.AbstrDoubleListTest" skipped="0" tests="47" time="0.167" timestamp="2020-02-27T09:22:22">
+<testsuite errors="0" failures="0" hostname="LAPTOP-D0N3HEAH" name="kolekce.AbstrDoubleListTest" skipped="0" tests="50" time="0.163" timestamp="2020-02-27T21:34:39">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="US" />
@@ -68,7 +68,7 @@
     <property name="libs.j2me_common_ant.maven-pom" value="" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner kolekce.AbstrDoubleListTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1\build\test\results\TEST-kolekce.AbstrDoubleListTest.xml crashfile=D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1\build\junitvmwatcher8731832898079919716.properties propsfile=D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1\build\junit2742673372807448568.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner kolekce.AbstrDoubleListTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1\build\test\results\TEST-kolekce.AbstrDoubleListTest.xml crashfile=D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1\build\junitvmwatcher1745085100763242384.properties propsfile=D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1\build\junit2911711316760845020.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -118,7 +118,7 @@
     <property name="javadoc.splitindex" value="true" />
     <property name="file.separator" value="\" />
     <property name="libs.Java-EE-GlassFish-v3-Prelude.maven-pom" value="" />
-    <property name="javac.includesfile.binary" value="D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1\null1282889878" />
+    <property name="javac.includesfile.binary" value="D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1\null744414148" />
     <property name="libs.junit_4.maven-pom" value="" />
     <property name="javac.test.processorpath" value="C:\Program Files\Java\jdk1.8.0_191\jre/lib/javaws.jar:C:\Program Files\Java\jdk1.8.0_191\jre/lib/deploy.jar:C:\Program Files\Java\jdk1.8.0_191\jre/lib/plugin.jar:build/classes:C:\Program Files\NetBeans 8.2\platform\modules\ext\junit-4.12.jar:C:\Program Files\NetBeans 8.2\platform\modules\ext\hamcrest-core-1.3.jar" />
     <property name="netbeans.buildnumber" value="201609300101" />
@@ -259,8 +259,8 @@
     <property name="libs.swing-layout.src" value="C:\Program Files\NetBeans 8.2\platform\docs\swing-layout-1.0.4-src.zip" />
     <property name="org.openide.major.version" value="IDE/1" />
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
-    <property name="javafx.preloader.jar.filename" value="" />
     <property name="ant.file.type.IDATS_Yarosh_Sem1_v1" value="file" />
+    <property name="javafx.preloader.jar.filename" value="" />
     <property name="netbeans.user" value="C:\Users\n3806\AppData\Roaming\NetBeans\8.2" />
     <property name="javadoc.additionalparam" value="" />
     <property name="java.io.tmpdir" value="C:\Users\n3806\AppData\Local\Temp\" />
@@ -289,8 +289,8 @@
     <property name="netbeans.default_userdir_root" value="C:\Users\n3806\AppData\Roaming\NetBeans" />
     <property name="libs.jsp-compilation-syscp.maven-pom" value="" />
     <property name="sun.cpu.isalist" value="amd64" />
-    <property name="libs.CopyLibs.javadoc" value="" />
     <property name="libs.spring-framework400.javadoc" value="" />
+    <property name="libs.CopyLibs.javadoc" value="" />
     <property name="org.openide.specification.version" value="6.2" />
     <property name="javafx.classpath.extension" value="C:\Program Files\Java\jdk1.8.0_191\jre/lib/javaws.jar:C:\Program Files\Java\jdk1.8.0_191\jre/lib/deploy.jar:C:\Program Files\Java\jdk1.8.0_191\jre/lib/plugin.jar" />
     <property name="libs.DataBindingME-PIM.classpath" value="C:\Program Files\NetBeans 8.2\mobility\modules\ext\netbeans_databindingme_pim.jar" />
@@ -300,10 +300,10 @@
     <property name="libs.primefaces.maven-pom" value="" />
     <property name="libs.javaee-api-6.0.maven-pom" value="" />
     <property name="libs.JWSAntTasks.src" value="" />
-    <property name="jar.index" value="false" />
     <property name="libs.CopyLibs.maven-pom" value="" />
-    <property name="libs.spring-framework300.javadoc" value="" />
+    <property name="jar.index" value="false" />
     <property name="libs.absolutelayout.javadoc" value="" />
+    <property name="libs.spring-framework300.javadoc" value="" />
     <property name="java.specification.name" value="Java Platform API Specification" />
     <property name="java.specification.vendor" value="Oracle Corporation" />
     <property name="libs.javac-api.classpath" value="C:\Program Files\NetBeans 8.2\java\modules\ext\nb-javac-api.jar" />
@@ -318,8 +318,8 @@
     <property name="libs.eclipselinkmodelgen.maven-pom" value="" />
     <property name="libs.jsp-compilation-syscp.javadoc" value="" />
     <property name="ant.file.type.jfx-impl" value="file" />
-    <property name="libs.javaee-endorsed-api-7.0.classpath" value="C:\Program Files\NetBeans 8.2\enterprise\modules\ext\javaee7-endorsed\javax.annotation-api.jar;C:\Program Files\NetBeans 8.2\enterprise\modules\ext\javaee7-endorsed\javax.xml.soap-api.jar;C:\Program Files\NetBeans 8.2\enterprise\modules\ext\javaee7-endorsed\jaxb-api-osgi.jar;C:\Program Files\NetBeans 8.2\enterprise\modules\ext\javaee7-endorsed\jaxws-api.jar;C:\Program Files\NetBeans 8.2\enterprise\modules\ext\javaee7-endorsed\jsr181-api.jar" />
     <property name="libs.eclipselinkmodelgen.javadoc" value="" />
+    <property name="libs.javaee-endorsed-api-7.0.classpath" value="C:\Program Files\NetBeans 8.2\enterprise\modules\ext\javaee7-endorsed\javax.annotation-api.jar;C:\Program Files\NetBeans 8.2\enterprise\modules\ext\javaee7-endorsed\javax.xml.soap-api.jar;C:\Program Files\NetBeans 8.2\enterprise\modules\ext\javaee7-endorsed\jaxb-api-osgi.jar;C:\Program Files\NetBeans 8.2\enterprise\modules\ext\javaee7-endorsed\jaxws-api.jar;C:\Program Files\NetBeans 8.2\enterprise\modules\ext\javaee7-endorsed\jsr181-api.jar" />
     <property name="libs.metro.javadoc" value="C:\Program Files\NetBeans 8.2\enterprise\docs\metro-1.4-doc.zip" />
     <property name="libs.struts.maven-pom" value="" />
     <property name="ant.file.jfx-impl" value="D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1\nbproject\jfx-impl.xml" />
@@ -329,22 +329,22 @@
     <property name="libs.jaxb.src" value="" />
     <property name="jdk.launcher.addexports.5" value="java.management/sun.management=ALL-UNNAMED" />
     <property name="jdk.launcher.addexports.4" value="java.desktop/com.sun.java.swing.plaf.windows=ALL-UNNAMED" />
-    <property name="work.dir" value="D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1" />
     <property name="jdk.launcher.addexports.3" value="java.desktop/sun.awt.im=ALL-UNNAMED" />
+    <property name="work.dir" value="D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1" />
     <property name="libs.jaxb.classpath" value="C:\Program Files\NetBeans 8.2\ide\modules\ext\jaxb\jaxb-impl.jar;C:\Program Files\NetBeans 8.2\ide\modules\ext\jaxb\jaxb-xjc.jar;C:\Program Files\NetBeans 8.2\ide\modules\ext\jaxb\jaxb1-impl.jar;C:\Program Files\NetBeans 8.2\ide\modules\ext\jaxb\activation.jar;C:\Program Files\NetBeans 8.2\ide\modules\ext\jaxb\api\jaxb-api.jar;C:\Program Files\NetBeans 8.2\ide\modules\ext\jaxb\api\jsr173_1.0_api.jar" />
-    <property name="compile.on.save.unsupported.javafx" value="true" />
     <property name="jdk.launcher.addexports.2" value="java.desktop/java.awt.peer=ALL-UNNAMED" />
+    <property name="compile.on.save.unsupported.javafx" value="true" />
     <property name="jdk.launcher.addexports.1" value="java.base/jdk.internal.jrtfs=ALL-UNNAMED" />
     <property name="jdk.launcher.addexports.0" value="java.desktop/sun.awt=ALL-UNNAMED" />
     <property name="do.depend" value="false" />
-    <property name="dist.javadoc.dir" value="dist/javadoc" />
     <property name="libs.j2me_common_ant.classpath" value="C:\Program Files\NetBeans 8.2\mobility\modules\org-netbeans-modules-j2me-common-ant.jar;C:\Program Files\NetBeans 8.2\java\modules\org-netbeans-modules-classfile.jar" />
+    <property name="dist.javadoc.dir" value="dist/javadoc" />
     <property name="libs.spring-webmvc3.0.classpath" value="C:\Program Files\NetBeans 8.2\java\modules\ext\spring-3.0\spring-webmvc-3.2.7.RELEASE.jar" />
     <property name="libs.swing-layout.classpath" value="C:\Program Files\NetBeans 8.2\platform\modules\ext\swing-layout-1.0.4.jar" />
     <property name="libs.javaee-web-api-7.0.maven-pom" value="" />
     <property name="libs.restlib.src" value="" />
-    <property name="build.generated.dir" value="build/generated" />
     <property name="javac.source" value="1.8" />
+    <property name="build.generated.dir" value="build/generated" />
     <property name="javafx.fallback.class" value="com.javafx.main.NoJavaFXFallback" />
     <property name="line.separator" value="&#xd;&#xa;" />
     <property name="java.specification.version" value="1.8" />
@@ -366,6 +366,7 @@
     <property name="libs.jsf12.src" value="" />
     <property name="libs.JAVADB_DRIVER_LABEL.maven-pom" value="" />
     <property name="libs.struts.javadoc" value="C:\Program Files\NetBeans 8.2\enterprise\docs\struts-1.3.10-javadoc.zip" />
+    <property name="ignore.failing.tests" value="true" />
     <property name="javafx.enable.concurrent.external.runs" value="false" />
     <property name="libs.Comet-GlassFish-v3.classpath" value="" />
     <property name="libs.javaee-web-api-7.0.src" value="" />
@@ -374,23 +375,23 @@
     <property name="dist.dir" value="dist" />
     <property name="libs.groovy-all.javadoc" value="" />
     <property name="testng.debug.mode" value="" />
-    <property name="libs.groovy-all.classpath" value="C:\Program Files\NetBeans 8.2\groovy\modules\ext\groovy-all.jar" />
     <property name="javac.fork" value="false" />
+    <property name="libs.groovy-all.classpath" value="C:\Program Files\NetBeans 8.2\groovy\modules\ext\groovy-all.jar" />
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
     <property name="default.javac.source" value="1.8" />
     <property name="debug-transport-by-os" value="dt_shmem" />
     <property name="sun.jnu.encoding" value="Cp1252" />
     <property name="libs.MySQLDriver.src" value="" />
-    <property name="build.test.results.dir" value="build/test/results" />
     <property name="java.runtime.version" value="1.8.0_191-b12" />
+    <property name="build.test.results.dir" value="build/test/results" />
     <property name="javafx.run.inbrowser" value="&lt;Default System Browser&gt;" />
     <property name="default.javac.target" value="1.8" />
     <property name="libs.junit_4.classpath" value="C:\Program Files\NetBeans 8.2\platform\modules\ext\junit-4.12.jar" />
     <property name="user.timezone" value="" />
     <property name="nb.junit.single" value="false" />
     <property name="ant.file.IDATS_Yarosh_Sem1_v1" value="D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1\build.xml" />
-    <property name="libs.javaee-endorsed-api-6.0.maven-pom" value="" />
     <property name="libs.JAVADB_DRIVER_LABEL.javadoc" value="" />
+    <property name="libs.javaee-endorsed-api-6.0.maven-pom" value="" />
     <property name="netbeans.dirs" value="C:\Program Files\NetBeans 8.2\nb;C:\Program Files\NetBeans 8.2\ergonomics;C:\Program Files\NetBeans 8.2\ide;C:\Program Files\NetBeans 8.2\extide;C:\Program Files\NetBeans 8.2\java;C:\Program Files\NetBeans 8.2\apisupport;C:\Program Files\NetBeans 8.2\webcommon;C:\Program Files\NetBeans 8.2\websvccommon;C:\Program Files\NetBeans 8.2\enterprise;C:\Program Files\NetBeans 8.2\mobility;C:\Program Files\NetBeans 8.2\profiler;C:\Program Files\NetBeans 8.2\python;C:\Program Files\NetBeans 8.2\php;C:\Program Files\NetBeans 8.2\identity;C:\Program Files\NetBeans 8.2\harness;C:\Program Files\NetBeans 8.2\cnd;C:\Program Files\NetBeans 8.2\cndext;C:\Program Files\NetBeans 8.2\dlight;C:\Program Files\NetBeans 8.2\groovy;C:\Program Files\NetBeans 8.2\extra;C:\Program Files\NetBeans 8.2\javacard;C:\Program Files\NetBeans 8.2\javafx" />
     <property name="libs.jsf20.javadoc" value="C:\Program Files\NetBeans 8.2\enterprise\docs\javaee-doc-api.jar" />
     <property name="libs.jstl.javadoc" value="C:\Program Files\NetBeans 8.2\enterprise\docs\javaee-doc-api.jar" />
@@ -403,8 +404,8 @@
     <property name="libs.restlib.maven-pom" value="" />
     <property name="libs.jpa2-persistence.javadoc" value="C:\Program Files\NetBeans 8.2\java\modules\ext\docs\javax.persistence-2.1.0-doc.zip" />
     <property name="libs.DataBindingME.javadoc" value="C:\Program Files\NetBeans 8.2\mobility\modules\docs\netbeans_databindingme-api.zip" />
-    <property name="apple.laf.useScreenMenuBar" value="true" />
     <property name="java.class.path" value="C:\Program Files\Java\jdk1.8.0_191\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_191\jre\lib\plugin.jar;D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1\build\classes;C:\Program Files\NetBeans 8.2\platform\modules\ext\junit-4.12.jar;C:\Program Files\NetBeans 8.2\platform\modules\ext\hamcrest-core-1.3.jar;D:\nikita\GitHub\University-project-3\IDATS_Yarosh_Sem1_v1\build\test\classes;C:\Program Files\NetBeans 8.2\extide\ant\lib\ant-launcher.jar;C:\Program Files\NetBeans 8.2\extide\ant\lib\ant.jar;C:\Program Files\NetBeans 8.2\extide\ant\lib\ant-junit.jar;C:\Program Files\NetBeans 8.2\extide\ant\lib\ant-junit4.jar" />
+    <property name="apple.laf.useScreenMenuBar" value="true" />
     <property name="libs.absolutelayout.src" value="" />
     <property name="libs.jpa20-persistence.classpath" value="C:\Program Files\NetBeans 8.2\java\modules\ext\eclipselink\javax.persistence_2.1.0.v201304241213.jar" />
     <property name="os.version" value="10.0" />
@@ -412,16 +413,16 @@
     <property name="libs.EclipseLink-GlassFish-v3.javadoc" value="C:\Program Files\NetBeans 8.2\enterprise\docs\javaee-doc-api.jar" />
     <property name="manifest.custom.permissions" value="" />
     <property name="libs.javaee-api-7.0.maven-pom" value="" />
-    <property name="sun.awt.enableExtraMouseButtons" value="true" />
     <property name="main.class.available" value="true" />
+    <property name="sun.awt.enableExtraMouseButtons" value="true" />
     <property name="sun.desktop" value="windows" />
     <property name="libs.hibernate4-persistence.src" value="" />
     <property name="libs.hibernate4-support.maven-pom" value="" />
     <property name="libs.Comet-GlassFish-v3.src" value="" />
     <property name="javafx.deploy.allowoffline" value="true" />
     <property name="libs.restlib.javadoc" value="" />
-    <property name="nb.internal.action.name" value="run.single" />
     <property name="libs.JAXB-ENDORSED.classpath" value="C:\Program Files\NetBeans 8.2\ide\modules\ext\jaxb\api\jaxb-api.jar" />
+    <property name="nb.internal.action.name" value="test.single" />
     <property name="libs.javaee-api-7.0.javadoc" value="C:\Program Files\NetBeans 8.2\enterprise\docs\javaee-doc-api.jar" />
     <property name="libs.eclipselink.classpath" value="C:\Program Files\NetBeans 8.2\java\modules\ext\eclipselink\eclipselink.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\eclipselink\javax.persistence_2.1.0.v201304241213.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\eclipselink\org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar" />
     <property name="libs.beans-binding.javadoc" value="C:\Program Files\NetBeans 8.2\java\docs\beansbinding-1.2.1-doc.zip" />
@@ -434,44 +435,45 @@
     <property name="run.jvmargs" value="" />
     <property name="libs.hibernate4-persistence.classpath" value="C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\antlr-2.7.7.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\c3p0-0.9.2.1.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\hibernate-c3p0-4.3.1.Final.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\mchange-commons-java-0.2.3.4.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\dom4j-1.6.1.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\ehcache-core-2.4.3.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\hibernate-ehcache-4.3.1.Final.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\hibernate-core-4.3.1.Final.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\jboss-logging-3.1.3.GA.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\hibernate-commons-annotations-4.0.4.Final.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\hibernate-entitymanager-4.3.1.Final.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\javassist-3.18.1-GA.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\jboss-transaction-api_1.2_spec-1.0.0.Final.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\slf4j-api-1.6.1.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\slf4j-simple-1.6.1.jar;C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\hibernate-jpa-2.1-api-1.0.0.Final.jar" />
     <property name="libs.JAXB-ENDORSED.src" value="" />
-    <property name="libs.testng.javadoc" value="C:\Program Files\NetBeans 8.2\platform\docs\testng-6.8.1-javadoc.zip" />
     <property name="libs.DataBindingME-PIM.src" value="C:\Program Files\NetBeans 8.2\mobility\sources\netbeans_databindingme_pim-src.zip" />
+    <property name="libs.testng.javadoc" value="C:\Program Files\NetBeans 8.2\platform\docs\testng-6.8.1-javadoc.zip" />
     <property name="user.script" value="" />
     <property name="libs.PostgreSQLDriver.classpath" value="C:\Program Files\NetBeans 8.2\ide\modules\ext\postgresql-9.4.1209.jar" />
     <property name="libs.jsf12.maven-pom" value="" />
     <property name="libs.hibernate4-persistencemodelgen.classpath" value="C:\Program Files\NetBeans 8.2\java\modules\ext\hibernate4\hibernate-jpamodelgen-4.3.1.Final.jar" />
     <property name="annotation.processing.source.output" value="build/generated-sources/ap-source-output" />
     <property name="main.class" value="com.javafx.main.Main" />
-    <property name="libs.CopyLibs.src" value="" />
     <property name="build.dir" value="build" />
+    <property name="libs.CopyLibs.src" value="" />
     <property name="libs.jsp-compilation.classpath" value="C:\Program Files\NetBeans 8.2\extide\ant\lib\ant.jar;C:\Program Files\NetBeans 8.2\enterprise\modules\ext\servlet3.1-jsp2.3-api.jar;C:\Program Files\NetBeans 8.2\enterprise\modules\ext\glassfish-jspparser-4.0.jar;C:\Program Files\NetBeans 8.2\enterprise\modules\ext\jsf-2_2\javax.faces.jar;C:\Program Files\NetBeans 8.2\enterprise\modules\ext\jstl-api.jar;C:\Program Files\NetBeans 8.2\extide\ant\lib\ant-launcher.jar" />
     <property name="ant.version" value="Apache Ant(TM) version 1.9.7 compiled on April 9 2016" />
     <property name="file.encoding" value="Cp1252" />
     <property name="build.classes.excludes" value="**/*.java,**/*.form" />
-    <property name="javadoc.nonavbar" value="false" />
     <property name="jdkBug6558476" value="false" />
+    <property name="javadoc.nonavbar" value="false" />
     <property name="libs.spring-webmvc4.0.classpath" value="C:\Program Files\NetBeans 8.2\java\modules\ext\spring-4\spring-webmvc-4.0.1.RELEASE.jar" />
     <property name="platform.active" value="default_platform" />
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="C:\Program Files\NetBeans 8.2\enterprise\docs\javaee-doc-api.jar" />
   </properties>
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberAktualni1" time="0.002" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberAktualni2" time="0.003" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberAktualni1" time="0.003" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberAktualni2" time="0.004" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberAktualni3" time="0.0" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberAktualni4" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberAktualni4" time="0.001" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberPredchudce1" time="0.0" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberPredchudce2" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberPredchudce2" time="0.001" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberPredchudce3" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberPredchudce4" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberPredchudce5" time="0.001" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberPosledni1" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberPosledni2" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testVlozNaslednika1" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testVlozNaslednika3" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testVlozNaslednika4" time="0.001" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testIterator1" time="0.002" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testIterator2" time="0.0" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testIterator3" time="0.001" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testZrus1" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testIterator1" time="0.003" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testIterator2" time="0.001" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testIterator3" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testZrus1" time="0.001" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testZrus2" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testVlozPrvni1" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testVlozPrvni2" time="0.0" />
@@ -480,28 +482,30 @@
   <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberNaslednika1" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberNaslednika2" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberNaslednika3" time="0.0" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberNaslednika4" time="0.001" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberNaslednika4" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberNaslednika5" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberNaslednika6" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberPrvni1" time="0.0" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberPrvni2" time="0.0" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniPredchudce2" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testOdeberPrvni2" time="0.08" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniPredchudce2" time="0.001" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniPredchudce3" time="0.0" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniAktualni1" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniAktualni1" time="0.001" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniAktualni2" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniAktualni3" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniAktualni4" time="0.0" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testJePrazdny1" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testJePrazdny1" time="0.001" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testJePrazdny2" time="0.0" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniPosledni1" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniPosledni1" time="0.001" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniPosledni2" time="0.0" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniPrvni1" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniPrvni1" time="0.001" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniPrvni2" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testVlozPredchudce1" time="0.001" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testVlozPredchudce3" time="0.0" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testVlozPredchudce4" time="0.0" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniNaslednika1" time="0.087" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniNaslednika3" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniNaslednika1" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testZpristupniNaslednika3" time="0.001" />
   <testcase classname="kolekce.AbstrDoubleListTest" name="testVlozPosledni1" time="0.0" />
-  <testcase classname="kolekce.AbstrDoubleListTest" name="testVlozPosledni2" time="0.0" />
+  <testcase classname="kolekce.AbstrDoubleListTest" name="testVlozPosledni2" time="0.001" />
   <system-out><![CDATA[odeberAktualni1
 odeberAktualni2
 odeberAktualni3
@@ -510,6 +514,7 @@ odeberPredchudce1
 odeberPredchudce2
 odeberPredchudce3
 odeberPredchudce4
+odeberPredchudce5
 odeberPosledni1
 odeberPosledni2
 vlozNaslednika1
@@ -528,6 +533,8 @@ odeberNaslednika1
 odeberNaslednika2
 odeberNaslednika3
 odeberNaslednika4
+odeberNaslednika5
+odeberNaslednika6
 odeberPrvni1
 odeberPrvni2
 zpristupniPredchudce2
