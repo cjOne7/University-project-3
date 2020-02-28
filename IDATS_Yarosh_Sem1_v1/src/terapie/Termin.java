@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public class Termin implements Serializable {
 
-    private static final Termin EMPTY_TERM = new Termin();
+    public static final Termin EMPTY_TERM = new Termin();
 
     private final Terapie terapie;
     private final TrvaniTerapie trvani;

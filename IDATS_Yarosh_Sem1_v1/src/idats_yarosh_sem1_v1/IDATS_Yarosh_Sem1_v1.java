@@ -31,6 +31,7 @@ public class IDATS_Yarosh_Sem1_v1 extends Application {
             }
         });
         stage.setResizable(false);
+        stage.setTitle("The shedule of therapy");
         stage.setScene(scene);
         stage.show();
     }

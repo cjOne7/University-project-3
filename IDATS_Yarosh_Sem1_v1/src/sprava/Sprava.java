@@ -30,9 +30,9 @@ import util.DateTimeUtil;
  *
  * kde jsou parametry
  *
- * terepeut - informace o jméně příjmení terapeuta a jeho praconí době alert je
- * určen pro ošetření chyb - mohou se tím nahradit vystavování výjimek logger je
- * učen pro monitorování vkládání a odebírání termíů ze seznamu.
+ * terepeut - informace o jméně příjmení terapeuta a jeho praconí době 
+ * alert - je určen pro ošetření chyb - mohou se tím nahradit vystavování výjimek 
+ * logger - je určen pro monitorování vkládání a odebírání termíů ze seznamu.
  *
  * @author karel@simerda.cz
  */
@@ -185,9 +185,7 @@ public interface Sprava extends Iterable<Termin> {
      * @param obdobi
      * @param pocetTerapii
      */
-    default void generuj(Obdobi obdobi, int pocetTerapii) {
-
-    }
+    void generuj(Obdobi obdobi, int pocetTerapii);
 
     /**
      *

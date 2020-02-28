@@ -1,9 +1,18 @@
 package sprava;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import terapie.Terapeut;
 import terapie.Terapie;
 import terapie.Termin;
@@ -22,7 +31,10 @@ public class SpravaTerminu implements Sprava {
     private final Consumer<String> NULL_CONSUMER = s -> {
     };
 
-    public SpravaTerminu(final Terapeut terapeut, final Consumer<String> alert, final Consumer<String> logger) {
+    public SpravaTerminu(
+            final Terapeut terapeut,
+            final Consumer<String> alert,
+            final Consumer<String> logger) {
         this.seznamTerminu = new AbstrDoubleList<>();
         this.terapeut = (terapeut == null) ? Terapeut.EMPTY_TERAPEUT : terapeut;
         this.alert = (alert == null) ? NULL_CONSUMER : alert;
@@ -31,14 +43,13 @@ public class SpravaTerminu implements Sprava {
 
     @Override
     public void vlozTermin(Termin termin) throws SpravceException {
-        if (jeVolno(termin.getStart(), termin.getEnd())){
-            
+        if (jeVolno(termin.getStart(), termin.getEnd())) {
+
         }
     }
 
     @Override
     public void vlozTermin(Termin termin, Pozice pozice) throws SpravceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -68,12 +79,35 @@ public class SpravaTerminu implements Sprava {
 
     @Override
     public void uloz(String soubor) throws SpravceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Objects.requireNonNull(seznamTerminu);
+        try (ObjectOutputStream objectOutputStream
+                = new ObjectOutputStream(new FileOutputStream(soubor))) {
+            objectOutputStream.writeInt(seznamTerminu.getMohutnost());
+            Iterator<Termin> it = seznamTerminu.iterator();
+            while (it.hasNext()) {
+                objectOutputStream.writeObject(it.next());
+            }
+        } catch (IOException ex) {
+            new SpravceException("File " + soubor + " do not exist");
+        }
     }
 
     @Override
     public void nacti(String soubor) throws SpravceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Objects.requireNonNull(seznamTerminu);
+        zrus();
+        try (ObjectInputStream objectInputStream
+                = new ObjectInputStream(new FileInputStream(soubor))) {
+            int size = objectInputStream.readInt();
+            for (int i = 0; i < size; i++) {
+                Termin prvek = (Termin) objectInputStream.readObject();
+                seznamTerminu.vlozPosledni(prvek);
+            }
+        } catch (IOException ex) {
+            new SpravceException("File " + soubor + " do not exist");
+        } catch (ClassNotFoundException ex) {
+            new SpravceException("Class not found");
+        }
     }
 
     @Override
@@ -83,7 +117,7 @@ public class SpravaTerminu implements Sprava {
 
     @Override
     public void zrus() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        seznamTerminu.zrus();
     }
 
     @Override
@@ -93,7 +127,6 @@ public class SpravaTerminu implements Sprava {
 
     @Override
     public void generuj(Obdobi obdobi, int pocetTerapii) {
-        Sprava.super.generuj(obdobi, pocetTerapii); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -123,6 +156,16 @@ public class SpravaTerminu implements Sprava {
 
     @Override
     public Iterator<Termin> iterator() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Iterator<Termin>() {
+            @Override
+            public boolean hasNext() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public Termin next() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
     }
 }
