@@ -2,10 +2,6 @@ package terapie;
 
 import java.io.Serializable;
 
-/**
- *
- * @author kasi0004
- */
 public enum TrvaniTerapie implements Serializable{
     KRATKA("krátka terapie", 2), DLOUHA("dlouhá terapie", 4);
 

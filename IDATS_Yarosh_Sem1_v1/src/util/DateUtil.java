@@ -6,10 +6,6 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
 import java.time.format.DateTimeFormatter;
 
-/**
- *
- * @author kasi0004
- */
 public final class DateUtil {
 
     private static final DateTimeFormatter formatter

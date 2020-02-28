@@ -2,10 +2,6 @@ package terapie;
 
 import java.io.Serializable;
 
-/**
- *
- * @author karel@simerda.cz
- */
 public enum Terapie implements Serializable{
     HYPOTERAPIE("Hypoterapie"),
     CANISTERAPIE("Canisterapie"),

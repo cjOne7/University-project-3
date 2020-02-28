@@ -4,33 +4,33 @@ public class PracovniDoba {
 
     public static final PracovniDoba STANDARDNI_DOBA = new PracovniDoba(8, 16);
 
-    private final int zacatek;
-    private final int konec;
+    private final int begin;
+    private final int end;
 
-    public PracovniDoba(final int zacatek, final int konec) {
-        this.zacatek = zacatek;
-        this.konec = konec;
+    public PracovniDoba(final int begin, final int end) {
+        this.begin = begin;
+        this.end = end;
     }
 
-    public int getZacatek() {
-        return zacatek;
+    public int getBegin() {
+        return begin;
     }
 
-    public int getKonec() {
-        return konec;
+    public int getEnd() {
+        return end;
     }
 
     public int getTrvani() {
-        return konec - zacatek;
+        return end - begin;
     }
 
     public boolean jeVDobe(final int hour) {
-        return zacatek <= hour && hour <= konec;
+        return begin <= hour && hour <= end;
     }
 
     @Override
     public String toString() {
-        return "PracovniDoba{" + "zacatek=" + zacatek + ", konec=" + konec + '}';
+        return "PracovniDoba{" + "begin=" + begin + ", end=" + end + '}';
     }
 
 }

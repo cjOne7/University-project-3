@@ -2,13 +2,8 @@ package util;
 
 import terapie.PracovniDoba;
 import java.time.LocalDateTime;
-import sprava.SpravceException;
 import terapie.Termin;
 
-/**
- *
- * @author kasi0004
- */
 public interface Matice {
 
     /**

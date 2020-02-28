@@ -2,8 +2,8 @@ package terapie;
 
 public class Person {
 
-    private String name = "";
-    private String surname = "";
+    private String name;
+    private String surname;
 
     public static final Person EMPTY_PERSON = new Person("", "");
 

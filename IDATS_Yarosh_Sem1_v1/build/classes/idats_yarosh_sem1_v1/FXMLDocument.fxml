@@ -24,7 +24,7 @@
     <RowConstraints maxHeight="395.6000122070312" minHeight="10.0" prefHeight="73.66668701171875" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <ListView prefHeight="651.0" prefWidth="639.0" GridPane.rowIndex="1" />
+      <ListView fx:id="listView" prefHeight="651.0" prefWidth="639.0" GridPane.rowIndex="1" />
       <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="63.0" prefWidth="611.0" vgap="10.0" GridPane.rowIndex="2">
          <children>
             <Label text="Od">
@@ -44,12 +44,12 @@
       </FlowPane>
       <FlowPane alignment="CENTER_LEFT" hgap="15.0" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" text="Terapeut:">
+            <Button mnemonicParsing="false" onAction="#enterTerapeutData" text="Terapeut:">
                <FlowPane.margin>
                   <Insets left="15.0" />
                </FlowPane.margin>
             </Button>
-            <Label text="Label" />
+            <Label fx:id="labelForWorkHours" prefHeight="18.0" prefWidth="267.0" visible="false" />
          </children>
       </FlowPane>
       <FlowPane alignment="TOP_CENTER" hgap="20.0" prefHeight="690.0" prefWidth="100.0" vgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">

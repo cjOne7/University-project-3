@@ -214,7 +214,7 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
             size--;
             return element;
         }
-//        final T element = = actual.next.element;
+//        final T element = actual.next.element;
 //        if (head.next == tail) {
 //            actual.next = null;
 //            tail = actual;

@@ -14,21 +14,26 @@ import kolekce.*;
 
 public class SpravaTerminu implements Sprava {
 
-    private AbstrDoubleList seznamTerminu;
+    private AbstrDoubleList<Termin> seznamTerminu;
     private Terapeut terapeut;
     private Consumer<String> alert;
     private Consumer<String> logger;
 
-    public SpravaTerminu(Terapeut terapeut, Consumer<String> alert, Consumer<String> logger) {
+    private final Consumer<String> NULL_CONSUMER = s -> {
+    };
+
+    public SpravaTerminu(final Terapeut terapeut, final Consumer<String> alert, final Consumer<String> logger) {
         this.seznamTerminu = new AbstrDoubleList<>();
-        this.terapeut = /*(terapeut == null) ? Terapeut.EMPTY_TERAPEUT :*/ terapeut;
-        this.alert = /*(alert == null) ? NULL_CONSUMER :*/ alert;
-        this.logger = /*(alert == null) ? NULL_CONSUMER :*/ logger;
+        this.terapeut = (terapeut == null) ? Terapeut.EMPTY_TERAPEUT : terapeut;
+        this.alert = (alert == null) ? NULL_CONSUMER : alert;
+        this.logger = (alert == null) ? NULL_CONSUMER : logger;
     }
 
     @Override
     public void vlozTermin(Termin termin) throws SpravceException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (jeVolno(termin.getStart(), termin.getEnd())){
+            
+        }
     }
 
     @Override
