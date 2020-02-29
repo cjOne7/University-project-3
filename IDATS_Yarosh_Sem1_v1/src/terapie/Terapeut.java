@@ -5,7 +5,7 @@ public class Terapeut {
     private Person person;
     private PracovniDoba pracovniDoba;
     
-    public static final Terapeut EMPTY_TERAPEUT = new Terapeut(Person.EMPTY_PERSON, PracovniDoba.STANDARDNI_DOBA);
+    public static final Terapeut EMPTY_TERAPEUT = new Terapeut(Person.EMPTY_PERSON, PracovniDoba.STANDARD_WORK_DAY);
 
     public Terapeut(final Person person, final PracovniDoba pracovniDoba) {
         this.person = person;

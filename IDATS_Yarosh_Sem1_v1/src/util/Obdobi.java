@@ -6,6 +6,7 @@ import java.time.Period;
 public class Obdobi {
 
     public static final Obdobi NEXT_WEEK = new Obdobi(LocalDate.now(), LocalDate.now().plusDays(7));
+    
     private LocalDate datumOdKdy;
     private LocalDate datumDoKdy;
 

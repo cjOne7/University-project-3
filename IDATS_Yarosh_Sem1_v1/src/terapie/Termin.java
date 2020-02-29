@@ -2,6 +2,7 @@ package terapie;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Termin implements Serializable {
 
@@ -44,6 +45,11 @@ public class Termin implements Serializable {
 
     @Override
     public String toString() {
-        return "Termin{" + "terapie=" + terapie + ", trvani=" + trvani + ", start=" + start + ", end=" + end + '}';
+        return "Termin{"
+                + "terapie=" + terapie
+                + ", trvani=" + trvani
+                + ", start=" + start.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))
+                + ", end=" + end.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))
+                + '}';
     }
 }
