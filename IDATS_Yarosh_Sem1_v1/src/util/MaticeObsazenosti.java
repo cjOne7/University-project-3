@@ -1,8 +1,8 @@
 package util;
 
 import java.time.LocalDateTime;
-import terapie.PracovniDoba;
-import terapie.Termin;
+import terapie.WorkHours;
+import terapie.Term;
 
 public class MaticeObsazenosti implements Matice{
 
@@ -27,7 +27,7 @@ public class MaticeObsazenosti implements Matice{
     }
 
     @Override
-    public Termin[][] getMaticeTermin() {
+    public Term[][] getMaticeTermin() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -47,7 +47,7 @@ public class MaticeObsazenosti implements Matice{
     }
 
     @Override
-    public PracovniDoba getPracovniDoba() {
+    public WorkHours getPracovniDoba() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

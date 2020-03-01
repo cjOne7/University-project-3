@@ -2,7 +2,7 @@ package terapie;
 
 import java.io.Serializable;
 
-public enum Terapie implements Serializable{
+public enum Therapy implements Serializable{
     HYPOTERAPIE("Hypoterapie"),
     CANISTERAPIE("Canisterapie"),
     ARTETERAPIE("Arteterapie"),
@@ -12,7 +12,7 @@ public enum Terapie implements Serializable{
     
     private final String nazev;
 
-    private Terapie(String nazev) {
+    private Therapy(String nazev) {
         this.nazev = nazev;
     }
 

@@ -12,9 +12,6 @@ public class Person {
         this.surname = surname;
     }
 
-    public Person() {
-    }
-
     public String getName() {
         return name;
     }
@@ -23,16 +20,16 @@ public class Person {
         return surname;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
-    public void setSurname(String surname) {
+    public void setSurname(final String surname) {
         this.surname = surname;
     }
 
     @Override
     public String toString() {
-        return "Person{" + "name=" + name + ", surname=" + surname + '}';
+        return "Person: name: " + name + ", surname: " + surname + ".";
     }
 }

@@ -28,7 +28,7 @@
       <ListView fx:id="listView" prefHeight="668.0" prefWidth="750.0" style="-fx-background-color: #32F3ED; -fx-border-style: #505050;" GridPane.rowIndex="1" />
       <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="73.0" prefWidth="773.0" style="-fx-background-color: #DA7878;" vgap="10.0" GridPane.rowIndex="2">
          <children>
-            <Label text="Od">
+            <Label text="From">
                <FlowPane.margin>
                   <Insets left="10.0" />
                </FlowPane.margin>
@@ -36,37 +36,37 @@
                   <Font name="Ravie" size="14.0" />
                </font></Label>
             <DatePicker fx:id="datePickerFrom" prefWidth="125.0" />
-            <Label text="do">
+            <Label text="to">
                <font>
                   <Font name="Lucida Calligraphy Italic" size="14.0" />
                </font></Label>
             <DatePicker fx:id="datePickerTo" prefWidth="125.0" />
-            <Label text="Pocet">
+            <Label text="Number:">
                <font>
-                  <Font name="Poor Richard" size="18.0" />
+                  <Font name="Poor Richard" size="15.0" />
                </font></Label>
-            <TextField prefHeight="26.0" prefWidth="36.0" />
-            <Button mnemonicParsing="false" text="Generuj">
+            <TextField fx:id="numberOfTerms" prefHeight="26.0" prefWidth="36.0" />
+            <Button mnemonicParsing="false" onAction="#generateTerms" text="Generate">
                <font>
-                  <Font name="SimSun" size="15.0" />
+                  <Font name="SimSun" size="14.0" />
                </font></Button>
-            <Button mnemonicParsing="false" text="Uloz">
+            <Button mnemonicParsing="false" text="Save">
                <font>
-                  <Font name="Sitka Small" size="15.0" />
+                  <Font name="Sitka Small" size="14.0" />
                </font></Button>
-            <Button mnemonicParsing="false" text="Nacti">
+            <Button mnemonicParsing="false" text="Read">
                <font>
-                  <Font name="Tempus Sans ITC" size="15.0" />
+                  <Font name="Tempus Sans ITC" size="14.0" />
                </font></Button>
-            <Button mnemonicParsing="false" text="Zrus">
+            <Button mnemonicParsing="false" text="Clear">
                <font>
-                  <Font name="Microsoft YaHei Light" size="15.0" />
+                  <Font name="Microsoft YaHei Light" size="14.0" />
                </font></Button>
          </children>
       </FlowPane>
       <FlowPane alignment="CENTER_LEFT" hgap="15.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #37E683;">
          <children>
-            <Button mnemonicParsing="false" onAction="#enterTerapeutData" text="Terapeut:">
+            <Button mnemonicParsing="false" onAction="#enterTerapeutData" text="Therapist:">
                <FlowPane.margin>
                   <Insets left="15.0" />
                </FlowPane.margin>
@@ -79,7 +79,7 @@
       </FlowPane>
       <FlowPane alignment="TOP_CENTER" hgap="20.0" prefHeight="690.0" prefWidth="100.0" style="-fx-background-color: #ffb266;" vgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Prochazeni:">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Browsing:">
                <FlowPane.margin>
                   <Insets top="10.0" />
                </FlowPane.margin>
@@ -87,59 +87,59 @@
                   <Font name="Copperplate Gothic Light" size="16.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="prvni">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="First">
                <font>
                   <Font name="Berlin Sans FB" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="dalsi">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Next">
                <font>
                   <Font name="Algerian" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="predchozi">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Previous">
                <font>
                   <Font name="Agency FB" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="posledni">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Last">
                <font>
                   <Font name="MS Reference Sans Serif" size="15.0" />
                </font></Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Vkladani:">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Input:">
                <font>
                   <Font name="Harrington" size="17.0" />
                </font></Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="najdi a vloz">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Find and insert">
                <font>
-                  <Font name="Bradley Hand ITC" size="15.0" />
+                  <Font name="Bradley Hand ITC" size="12.0" />
                </font></Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Odstraneni:">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Remove:">
                <font>
                   <Font name="Lucida Bright Italic" size="15.0" />
                </font></Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="prvni">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="First">
                <font>
                   <Font name="Castellar" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="aktualni">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Actual">
                <font>
                   <Font name="Century" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="dalsi">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Next">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="predchozi">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Previous">
                <font>
                   <Font name="Comic Sans MS" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="posledni">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Last">
                <font>
                   <Font name="Kristen ITC" size="15.0" />
                </font></Button>
          </children>
       </FlowPane>
-      <Pane fx:id="paneForDates" prefHeight="230.0" prefWidth="230.0" style="-fx-background-color: #909090;" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP">
+      <Pane fx:id="paneForDates" prefHeight="230.0" prefWidth="230.0" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="1">
          <GridPane.margin>
-            <Insets left="65.0" />
+            <Insets bottom="400.0" left="65.0" />
          </GridPane.margin>
       </Pane>
       <Pane prefHeight="73.0" prefWidth="162.0" style="-fx-background-color: #DA7878;" GridPane.columnIndex="1" GridPane.rowIndex="2" />

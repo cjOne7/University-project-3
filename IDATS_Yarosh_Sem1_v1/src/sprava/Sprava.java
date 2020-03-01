@@ -8,10 +8,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-import terapie.Terapeut;
-import terapie.Terapie;
-import terapie.Termin;
-import terapie.TrvaniTerapie;
+import terapie.Therapist;
+import terapie.Therapy;
+import terapie.Term;
+import terapie.DurOfTherapy;
 import util.DateTimeUtil;
 
 /**
@@ -19,13 +19,13 @@ import util.DateTimeUtil;
  *
  * <pre>
  * <code>
- *  public SpravaTerminu(Terapeut terapeut,  Consumer<String> alert, Consumer<String> logger) {
+  public SpravaTerminu(Therapist terapeut,  Consumer<String> alert, Consumer<String> logger) {
  *      this.seznamTerminu = new AbstrDoubleList<>();
- *      this.terapeut = (terapeut == null) ? Terapeut.EMPTY_TERAPEUT : terapeut;
- *      this.alert = (alert == null) ? NULL_CONSUMER : alert;
- *      this.logger = (alert == null) ? NULL_CONSUMER : logger;
- * }
- * </code>
+      this.terapeut = (terapeut == null) ? Therapist.EMPTY_TERAPEUT : terapeut;
+      this.alert = (alert == null) ? NULL_CONSUMER : alert;
+      this.logger = (alert == null) ? NULL_CONSUMER : logger;
+ }
+ </code>
  * </pre>
  *
  * kde jsou parametry
@@ -36,7 +36,7 @@ import util.DateTimeUtil;
  *
  * @author karel@simerda.cz
  */
-public interface Sprava extends Iterable<Termin> {
+public interface Sprava extends Iterable<Term> {
 
     /**
      * Metoda vloží termin s terapií do seznamu na příslušnou pozici podle data
@@ -52,7 +52,7 @@ public interface Sprava extends Iterable<Termin> {
      * @throws SpravceException výjimka se vystaví v případě, že nebylo možné
      * vložení dokončit
      */
-    void vlozTermin(Termin termin) throws SpravceException;
+    void vlozTermin(Term termin) throws SpravceException;
 
     /**
      * Metoda vloží termin s terapií na požadovanou pozici seznamu. Ale před tím
@@ -66,7 +66,7 @@ public interface Sprava extends Iterable<Termin> {
      *
      * @throws SpravceException
      */
-    void vlozTermin(Termin termin, Pozice pozice) throws SpravceException;
+    void vlozTermin(Term termin, Pozice pozice) throws SpravceException;
 
     /**
      * Metoda zpřístupní termín z požadované pozice (první, poslední,
@@ -79,7 +79,7 @@ public interface Sprava extends Iterable<Termin> {
      *
      * @throws sprava.SpravceException
      */
-    Termin zpristupniTermin(Pozice pozice) throws SpravceException;
+    Term zpristupniTermin(Pozice pozice) throws SpravceException;
 
     /**
      * Metoda odebere termín z požadované pozice (první, poslední, předchůdce,
@@ -94,7 +94,7 @@ public interface Sprava extends Iterable<Termin> {
      *
      * @throws SpravceException
      */
-    Termin odeberTermin(Pozice pozice) throws SpravceException;
+    Term odeberTermin(Pozice pozice) throws SpravceException;
 
     /**
      * Metoda ověří, zda je místo pro termín volné.
@@ -129,9 +129,9 @@ public interface Sprava extends Iterable<Termin> {
      * @return vrací odkaz na nový termín, který lze vložit do seznamu termínů.
      * Pokud není volno v daném období, tak se vrací null
      */
-    Termin najdiPrvniVolnyTermin(
-            Terapie terapie,
-            TrvaniTerapie trvani,
+    Term najdiPrvniVolnyTermin(
+            Therapy terapie,
+            DurOfTherapy trvani,
             LocalDate odkdy,
             LocalDate dokdy);
 
@@ -159,7 +159,7 @@ public interface Sprava extends Iterable<Termin> {
      *
      * @return
      */
-    Terapeut getTerapeut();
+    Therapist getTerapeut();
 
     /**
      * Metoda zruší celý seznam s termíny terapiemi.
@@ -175,7 +175,7 @@ public interface Sprava extends Iterable<Termin> {
      * @return
      * @throws SpravceException
      */
-    default Termin najdiDalsiVolnyTermin(LocalDate odkdy, LocalDate dokdy) throws SpravceException {
+    default Term najdiDalsiVolnyTermin(LocalDate odkdy, LocalDate dokdy) throws SpravceException {
         throw new SpravceException("Metoda neni implementována.");
     }
 
@@ -191,7 +191,7 @@ public interface Sprava extends Iterable<Termin> {
      *
      * @return
      */
-    default Stream<Termin> stream() {
+    default Stream<Term> stream() {
         return StreamSupport.stream(spliterator(), false);
     }
 
@@ -204,7 +204,7 @@ public interface Sprava extends Iterable<Termin> {
      *
      * @param terminy seznam termínů
      */
-    default void vlozTermíny(Termin... terminy) {
+    default void vlozTermíny(Term... terminy) {
         java.util.Arrays.stream(terminy).forEach(t -> {
             try {
                 vlozTermin(t);
@@ -251,9 +251,9 @@ public interface Sprava extends Iterable<Termin> {
      * @param dokdy
      * @return
      */
-    default Termin najdiPrvniVolnyTermin(
-            Terapie terapie,
-            TrvaniTerapie trvani,
+    default Term najdiPrvniVolnyTermin(
+            Therapy terapie,
+            DurOfTherapy trvani,
             String odkdy,
             String dokdy) {
         return najdiPrvniVolnyTermin(
@@ -271,9 +271,9 @@ public interface Sprava extends Iterable<Termin> {
      * @param obdobi
      * @return
      */
-    default Termin najdiPrvniVolnyTermin(
-            Terapie terapie,
-            TrvaniTerapie trvani,
+    default Term najdiPrvniVolnyTermin(
+            Therapy terapie,
+            DurOfTherapy trvani,
             Obdobi obdobi) {
         return najdiPrvniVolnyTermin(
                 terapie,

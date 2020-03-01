@@ -13,18 +13,18 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import terapie.Terapeut;
-import terapie.Terapie;
-import terapie.Termin;
-import terapie.TrvaniTerapie;
+import terapie.Therapist;
+import terapie.Therapy;
+import terapie.Term;
+import terapie.DurOfTherapy;
 import util.MaticeObsazenosti;
 import util.Obdobi;
 import kolekce.*;
 
 public class SpravaTerminu implements Sprava {
 
-    private AbstrDoubleList<Termin> seznamTerminu;
-    private Terapeut terapeut;
+    private AbstrDoubleList<Term> seznamTerminu;
+    private Therapist terapeut;
     private Consumer<String> alert;
     private Consumer<String> logger;
 
@@ -32,33 +32,33 @@ public class SpravaTerminu implements Sprava {
     };
 
     public SpravaTerminu(
-            final Terapeut terapeut,
+            final Therapist terapeut,
             final Consumer<String> alert,
             final Consumer<String> logger) {
         this.seznamTerminu = new AbstrDoubleList<>();
-        this.terapeut = (terapeut == null) ? Terapeut.EMPTY_TERAPEUT : terapeut;
+        this.terapeut = (terapeut == null) ? Therapist.EMPTY_THERAPIST : terapeut;
         this.alert = (alert == null) ? NULL_CONSUMER : alert;
         this.logger = (alert == null) ? NULL_CONSUMER : logger;
     }
 
     @Override
-    public void vlozTermin(Termin termin) throws SpravceException {
+    public void vlozTermin(Term termin) throws SpravceException {
         if (jeVolno(termin.getStart(), termin.getEnd())) {
 
         }
     }
 
     @Override
-    public void vlozTermin(Termin termin, Pozice pozice) throws SpravceException {
+    public void vlozTermin(Term termin, Pozice pozice) throws SpravceException {
     }
 
     @Override
-    public Termin zpristupniTermin(Pozice pozice) throws SpravceException {
+    public Term zpristupniTermin(Pozice pozice) throws SpravceException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Termin odeberTermin(Pozice pozice) throws SpravceException {
+    public Term odeberTermin(Pozice pozice) throws SpravceException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -73,7 +73,7 @@ public class SpravaTerminu implements Sprava {
     }
 
     @Override
-    public Termin najdiPrvniVolnyTermin(Terapie terapie, TrvaniTerapie trvani, LocalDate odkdy, LocalDate dokdy) {
+    public Term najdiPrvniVolnyTermin(Therapy terapie, DurOfTherapy trvani, LocalDate odkdy, LocalDate dokdy) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -83,7 +83,7 @@ public class SpravaTerminu implements Sprava {
         try (ObjectOutputStream objectOutputStream
                 = new ObjectOutputStream(new FileOutputStream(soubor))) {
             objectOutputStream.writeInt(seznamTerminu.getMohutnost());
-            Iterator<Termin> it = seznamTerminu.iterator();
+            Iterator<Term> it = seznamTerminu.iterator();
             while (it.hasNext()) {
                 objectOutputStream.writeObject(it.next());
             }
@@ -100,7 +100,7 @@ public class SpravaTerminu implements Sprava {
                 = new ObjectInputStream(new FileInputStream(soubor))) {
             int size = objectInputStream.readInt();
             for (int i = 0; i < size; i++) {
-                Termin prvek = (Termin) objectInputStream.readObject();
+                Term prvek = (Term) objectInputStream.readObject();
                 seznamTerminu.vlozPosledni(prvek);
             }
         } catch (IOException ex) {
@@ -111,7 +111,7 @@ public class SpravaTerminu implements Sprava {
     }
 
     @Override
-    public Terapeut getTerapeut() {
+    public Therapist getTerapeut() {
         return terapeut;
     }
 
@@ -121,7 +121,7 @@ public class SpravaTerminu implements Sprava {
     }
 
     @Override
-    public Termin najdiDalsiVolnyTermin(LocalDate odkdy, LocalDate dokdy) throws SpravceException {
+    public Term najdiDalsiVolnyTermin(LocalDate odkdy, LocalDate dokdy) throws SpravceException {
         return Sprava.super.najdiDalsiVolnyTermin(odkdy, dokdy); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -130,7 +130,7 @@ public class SpravaTerminu implements Sprava {
     }
 
     @Override
-    public void vlozTermíny(Termin... terminy) {
+    public void vlozTermíny(Term... terminy) {
         Sprava.super.vlozTermíny(terminy); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -145,25 +145,25 @@ public class SpravaTerminu implements Sprava {
     }
 
     @Override
-    public Termin najdiPrvniVolnyTermin(Terapie terapie, TrvaniTerapie trvani, String odkdy, String dokdy) {
+    public Term najdiPrvniVolnyTermin(Therapy terapie, DurOfTherapy trvani, String odkdy, String dokdy) {
         return Sprava.super.najdiPrvniVolnyTermin(terapie, trvani, odkdy, dokdy); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Termin najdiPrvniVolnyTermin(Terapie terapie, TrvaniTerapie trvani, Obdobi obdobi) {
+    public Term najdiPrvniVolnyTermin(Therapy terapie, DurOfTherapy trvani, Obdobi obdobi) {
         return Sprava.super.najdiPrvniVolnyTermin(terapie, trvani, obdobi); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Iterator<Termin> iterator() {
-        return new Iterator<Termin>() {
+    public Iterator<Term> iterator() {
+        return new Iterator<Term>() {
             @Override
             public boolean hasNext() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
-            public Termin next() {
+            public Term next() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         };

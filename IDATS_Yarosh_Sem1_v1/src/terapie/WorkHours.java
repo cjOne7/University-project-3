@@ -1,13 +1,13 @@
 package terapie;
 
-public class PracovniDoba {
+public class WorkHours {
 
-    public static final PracovniDoba STANDARD_WORK_DAY = new PracovniDoba(8, 16);
+    public static final WorkHours STANDARD_WORK_HOURS = new WorkHours(8, 16);
 
     private final int beginOfWorkDay;
     private final int endOfWorkDay;
 
-    public PracovniDoba(final int begin, final int end) {
+    public WorkHours(final int begin, final int end) {
         this.beginOfWorkDay = begin;
         this.endOfWorkDay = end;
     }
@@ -24,12 +24,11 @@ public class PracovniDoba {
         return endOfWorkDay - beginOfWorkDay;
     }
 
-    public boolean jeVDobe(final int hour) {
-        return beginOfWorkDay <= hour && hour <= endOfWorkDay;
-    }
-
+//    public boolean jeVDobe(final int hour) {
+//        return beginOfWorkDay <= hour && hour <= endOfWorkDay;
+//    }
     @Override
     public String toString() {
-        return "PracovniDoba{" + "begin of work day: " + beginOfWorkDay + ", end of work day: " + endOfWorkDay + '}';
+        return "Working day starts at: " + beginOfWorkDay + "h, end at: " + endOfWorkDay + "h.";
     }
 }

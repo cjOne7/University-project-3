@@ -2,18 +2,18 @@ package terapie;
 
 import java.io.Serializable;
 
-public enum TrvaniTerapie implements Serializable {
+public enum DurOfTherapy implements Serializable {
     SHORT("short therapy", 2), LONG("long therapy", 4);
 
     private final String typeOfDuration;
     private final int durationOfTherapy;
 
-    private TrvaniTerapie(final String typeOfDuration, final int durationOfTherapy) {
+    private DurOfTherapy(final String typeOfDuration, final int durationOfTherapy) {
         this.typeOfDuration = typeOfDuration;
         this.durationOfTherapy = durationOfTherapy;
     }
 
-    public int getDurationOfTherapy() {
+    public int getDurOfTherapy() {
         return durationOfTherapy;
     }
 
@@ -23,6 +23,6 @@ public enum TrvaniTerapie implements Serializable {
 
     @Override
     public String toString() {
-        return typeOfDuration + ':' + durationOfTherapy + 'h';
+        return durationOfTherapy + "h";
     }
 }

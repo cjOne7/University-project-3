@@ -1,8 +1,8 @@
 package util;
 
-import terapie.PracovniDoba;
+import terapie.WorkHours;
 import java.time.LocalDateTime;
-import terapie.Termin;
+import terapie.Term;
 
 public interface Matice {
 
@@ -21,7 +21,7 @@ public interface Matice {
 
     char[][] getMaticeChar(char znakVolno, char znakObsazeno);
 
-    Termin[][] getMaticeTermin();
+    Term[][] getMaticeTermin();
 
     Obdobi getObdobi();
 
@@ -29,7 +29,7 @@ public interface Matice {
 
     int getPocetHodin();
 
-    PracovniDoba getPracovniDoba();
+    WorkHours getPracovniDoba();
 
     /**
      *
