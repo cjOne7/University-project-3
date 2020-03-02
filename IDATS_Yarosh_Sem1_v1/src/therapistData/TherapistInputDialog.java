@@ -19,7 +19,7 @@ public class TherapistInputDialog {
     private Integer workTo = WorkHours.STANDARD_WORK_HOURS.getEndOfWorkDay();
     private Therapist therapist = Therapist.EMPTY_THERAPIST;
 
-    public void workWithTherapistData() {
+    public void workWithTherapistData(final Label label) {
         Dialog<ButtonType> inputDialog = new Dialog<>(); //create dialog
 
         bgForDialog.setPrefSize(300, 240);//set dialog size
@@ -42,17 +42,19 @@ public class TherapistInputDialog {
                     workTo = Integer.parseInt(textFields.get(3).getText());
                 }
             } catch (NumberFormatException e) {
-                repeatInput("Error", "Wrong number format", Alert.AlertType.ERROR);
+                repeatInput(label, "Error", "Wrong number format", Alert.AlertType.ERROR);
             }
             if (!isInDayInterval(workFrom) || !isInDayInterval(workTo) || workFrom > workTo) {
                 workFrom = WorkHours.STANDARD_WORK_HOURS.getBeginOfWorkDay();
-                repeatInput("Error", "Unexisting hours", Alert.AlertType.ERROR);
+                repeatInput(label, "Error", "Unexisting hours", Alert.AlertType.ERROR);
             } else if (name.isEmpty() || surname.isEmpty()) {
-                repeatInput("Empty fields", "You have one or more blank fields. Please, fill them.",
-                        Alert.AlertType.INFORMATION);
+                repeatInput(label, "Empty fields", "You have one or more blank fields. Please, fill them.", Alert.AlertType.INFORMATION);
             } else {
                 therapist = new Therapist(new Person(name, surname), new WorkHours(workFrom, workTo));
             }
+            label.setText(String.format("Therapist is working from %d to %d hours.",
+                    therapist.getWorkHours().getBeginOfWorkDay(), therapist.getWorkHours().getEndOfWorkDay()));
+            label.setVisible(true);
         });
     }
 
@@ -61,11 +63,12 @@ public class TherapistInputDialog {
     }
 
     private void repeatInput(
+            final Label label,
             final String titleText,
             final String contextText,
             final Alert.AlertType alertType) {
         FXMLDocumentController.callAlertWindow(titleText, contextText, alertType);
-        workWithTherapistData();
+        workWithTherapistData(label);
     }
 
     private TextField createTextField(
@@ -108,5 +111,4 @@ public class TherapistInputDialog {
     public Therapist getTherapist() {
         return therapist;
     }
-
 }

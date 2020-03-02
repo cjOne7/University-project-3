@@ -1,7 +1,6 @@
 package idats_yarosh_sem1_v1;
 
 import colection.AbstrDoubleList;
-import colection.KolekceException;
 import therapy.Term;
 import therapistData.Therapist;
 import therapy.GenerateTerms;
@@ -63,12 +62,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void enterTerapeutData(ActionEvent event) {
-        TherapistInputDialog tdl = new TherapistInputDialog();
-        tdl.workWithTherapistData();
-        therapist = tdl.getTherapist();
-        labelForWorkHours.setText(String.format("Therapist is working from %d to %d hours.",
-                therapist.getWorkHours().getBeginOfWorkDay(), therapist.getWorkHours().getEndOfWorkDay()));
-        labelForWorkHours.setVisible(true);
+        TherapistInputDialog therapistInputDialog = new TherapistInputDialog();
+        therapistInputDialog.workWithTherapistData(labelForWorkHours);
+        therapist = therapistInputDialog.getTherapist();
     }
 
     public static Alert callAlertWindow(
@@ -219,7 +215,7 @@ public class FXMLDocumentController implements Initializable {
             actualTerm = listView.getSelectionModel().getSelectedItem();
             listOfTerms.zpristupniPrvni();
         } else {
-            callAlertWindow("Empty list", "You have empty list of terms", Alert.AlertType.INFORMATION);
+            callAlertWindow("Empty list", "You have empty list of terms.", Alert.AlertType.INFORMATION);
         }
     }
 
@@ -258,45 +254,39 @@ public class FXMLDocumentController implements Initializable {
             actualTerm = listView.getSelectionModel().getSelectedItem();
             listOfTerms.zpristupniPosledni();
         } else {
-            callAlertWindow("Empty list", "You have empty list of terms", Alert.AlertType.INFORMATION);
+            callAlertWindow("Empty list", "You have empty list of terms.", Alert.AlertType.INFORMATION);
+        }
+    }
+
+    private void repaintDeletedRects(final Term deletedTerm) {
+        long row = Math.abs(deletedTerm.getStart().toLocalDate().toEpochDay() - datePickerFrom.getValue().toEpochDay());
+        int column = Math.abs(deletedTerm.getStart().getHour() - therapist.getWorkHours().getBeginOfWorkDay());
+        rects[column][(int) row].setFill(Color.GREY);
+        rects[column + 1][(int) row].setFill(Color.GREY);
+        if (deletedTerm.getDurOfTerm().getDurOfTherapy() == 4) {
+            rects[column + 2][(int) row].setFill(Color.GREY);
+            rects[column + 3][(int) row].setFill(Color.GREY);
         }
     }
 
     @FXML
     private void deleteFirstTerm(ActionEvent event) {
         if (!terms.isEmpty()) {
-            terms.remove(0);
+            Term deletedTerm = terms.remove(0);
+            repaintDeletedRects(deletedTerm);
             if (terms.isEmpty()) {
                 return;
             }
             actualTerm = terms.get(0);
             listOfTerms.odeberPrvni();
         } else {
-            callAlertWindow("Empty list", "You have empty list of terms", Alert.AlertType.INFORMATION);
+            callAlertWindow("Empty list", "You have empty list of terms.", Alert.AlertType.INFORMATION);
         }
     }
 
     @FXML
     private void deleteActualTerm(ActionEvent event) {
-//        try {
-//            listOfTerms.zpristupniAktualni();
-//        } catch (KolekceException e) {
-//            return;
-//        }
-//        if (!terms.isEmpty()) {
-//            terms.remove(actualTerm);
-//            if (terms.isEmpty()) {
-//                return;
-//            }
-//            if (listOfTerms.zpristupniAktualni() == null) {
-//                callAlertWindow("The actual item is not selected", "You didn't have select actual item from list", Alert.AlertType.INFORMATION);
-//                return;
-//            }
-//            actualTerm = terms.get(0);
-//            listOfTerms.odeberAktualni();
-//        } else {
-//            callAlertWindow("The actual item is not selected", "You didn't have select actual item from list", Alert.AlertType.INFORMATION);
-//        }
+//        callAlertWindow("The actual item is not selected", "You didn't have select actual item from list", Alert.AlertType.INFORMATION);
     }
 
     @FXML
@@ -312,14 +302,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void deleteLastTerm(ActionEvent event) {
         if (!terms.isEmpty()) {
-            terms.remove(terms.size() - 1);
+            Term deletedTerm = terms.remove(terms.size() - 1);
+            repaintDeletedRects(deletedTerm);
             if (terms.isEmpty()) {
                 return;
             }
             actualTerm = terms.get(terms.size() - 1);
             listOfTerms.odeberPosledni();
         } else {
-            callAlertWindow("Empty list", "You have empty list of terms", Alert.AlertType.INFORMATION);
+            callAlertWindow("Empty list", "You have empty list of terms.", Alert.AlertType.INFORMATION);
         }
     }
 }

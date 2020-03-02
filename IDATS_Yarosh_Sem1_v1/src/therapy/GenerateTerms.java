@@ -94,7 +94,7 @@ public class GenerateTerms {
                 if (isFreeSpace(column, row)) {
                     isBusy[column][(int) row] = true;
                     isBusy[column + 1][(int) row] = true;
-                    if (termin.getDurOfTherapy().getDurOfTherapy() == 4) {
+                    if (termin.getDurOfTerm().getDurOfTherapy() == 4) {
                         isBusy[column + 2][(int) row] = true;
                         isBusy[column + 3][(int) row] = true;
                     }

@@ -31,7 +31,7 @@ public class Term implements Serializable {
         return therapy;
     }
 
-    public DurOfTherapy getDurOfTherapy() {
+    public DurOfTherapy getDurOfTerm() {
         return durOfTherapy;
     }
 
