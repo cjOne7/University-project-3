@@ -25,7 +25,7 @@
     <RowConstraints maxHeight="395.6000122070312" minHeight="10.0" prefHeight="73.66668701171875" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <ListView fx:id="listView" prefHeight="668.0" prefWidth="750.0" style="-fx-background-color: #32F3ED;" GridPane.rowIndex="1" />
+      <ListView fx:id="listView" prefHeight="669.0" prefWidth="750.0" style="-fx-background-color: #32F3ED;" GridPane.rowIndex="1" />
       <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="73.0" prefWidth="773.0" style="-fx-background-color: #DA7878;" vgap="10.0" GridPane.rowIndex="2">
          <children>
             <Label text="From">

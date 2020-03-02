@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import therapy.Therapist;
+import therapist_data.Therapist;
 import therapy.Therapy;
 import therapy.Term;
 import therapy.DurOfTherapy;

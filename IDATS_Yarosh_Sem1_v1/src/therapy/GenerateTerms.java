@@ -1,5 +1,6 @@
 package therapy;
 
+import therapist_data.WorkHours;
 import java.time.*;
 import java.util.Random;
 import javafx.scene.control.DatePicker;

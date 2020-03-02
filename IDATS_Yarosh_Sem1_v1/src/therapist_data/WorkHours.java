@@ -1,4 +1,4 @@
-package therapy;
+package therapist_data;
 
 public class WorkHours {
 

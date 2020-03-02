@@ -1,10 +1,10 @@
 package idats_yarosh_sem1_v1;
 
 import therapy.Term;
-import therapy.Therapist;
-import therapy.WorkHours;
+import therapist_data.Therapist;
+import therapist_data.WorkHours;
 import therapy.GenerateTerms;
-import therapy.Person;
+import therapist_data.Person;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -128,7 +128,7 @@ public class FXMLDocumentController implements Initializable {
         labelForWorkHours.setVisible(true);
     }
 
-    private Alert callAlertWindow(
+    public static Alert callAlertWindow(
             final String titleText,
             final String contextText,
             final Alert.AlertType alertType) {
@@ -212,40 +212,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     private void createShedule() {
-        paneForDates.getChildren().clear();
-
-        LocalDate todaysDate = datePickerFrom.getValue();
-        LocalDate nextDate = datePickerTo.getValue();
-
-//        int todaysDay = todaysDate.getDayOfMonth();
-//        int numberOfMonth = todaysDate.getMonthValue();
-//        int lengthOfMonth = todaysDate.lengthOfMonth();
-        int rows = (int) Math.abs(todaysDate.toEpochDay() - nextDate.toEpochDay()) + 1;
+        int rows = (int) Math.abs(datePickerFrom.getValue().toEpochDay() - datePickerTo.getValue().toEpochDay()) + 1;
         int columns = therapist.getWorkHours().getDurOfWorkDay();
-
-//        int widthOfRect = 30;
-//        int heightOfRect = 30;
-        drawShedule(columns, rows, todaysDate);
-
-//        int hour = therapist.getWorkHours().getBeginOfWorkDay();
-//        rects = new Rectangle[columns][rows];
-//        for (int i = 0; i < columns; i++) {
-//            for (int j = 0; j < rows; j++) {
-//                if (j == 0) {
-//                    createLabel(hour++ + "h", widthOfRect, heightOfRect, i, j, true);
-//                }
-//                if (i == 0) {
-//                    if (todaysDay > lengthOfMonth) {
-//                        todaysDay = 1;
-//                        numberOfMonth++;
-//                        todaysDate = todaysDate.plusMonths(1);
-//                        lengthOfMonth = todaysDate.lengthOfMonth();
-//                    }
-//                    createLabel(String.format("%02d.%02d", todaysDay++, numberOfMonth), widthOfRect, heightOfRect, i, j, false);
-//                }
-//                rects[i][j] = createRect(widthOfRect, heightOfRect, i, j);
-//            }
-//        }
+        drawShedule(columns, rows, datePickerFrom.getValue());
     }
 
     private void drawShedule(final int columns, final int rows, LocalDate todaysDate) {

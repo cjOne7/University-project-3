@@ -1,6 +1,6 @@
 package util;
 
-import therapy.WorkHours;
+import therapist_data.WorkHours;
 import java.time.LocalDateTime;
 import therapy.Term;
 

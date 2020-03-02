@@ -1,7 +1,7 @@
 package util;
 
 import java.time.LocalDateTime;
-import therapy.WorkHours;
+import therapist_data.WorkHours;
 import therapy.Term;
 
 public class MaticeObsazenosti implements Matice{

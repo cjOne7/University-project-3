@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-import therapy.Therapist;
+import therapist_data.Therapist;
 import therapy.Therapy;
 import therapy.Term;
 import therapy.DurOfTherapy;
