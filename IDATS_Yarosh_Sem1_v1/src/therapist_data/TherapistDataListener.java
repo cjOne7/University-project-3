@@ -3,7 +3,6 @@ package therapist_data;
 import idats_yarosh_sem1_v1.FXMLDocumentController;
 import java.util.Arrays;
 import java.util.List;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
@@ -11,7 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class TherapistDataCreater {
+public class TherapistDataListener {
 
     private final AnchorPane bgForDialog = new AnchorPane();
     private String name = "";
@@ -104,6 +103,10 @@ public class TherapistDataCreater {
         createLabel("Surname:", 95.0, 10.0);
         createLabel("Work from:", 135.0, 10.0);
         createLabel("Work to:", 175.0, 10.0);
+    }
+
+    public Therapist getTherapist() {
+        return therapist;
     }
 
 }

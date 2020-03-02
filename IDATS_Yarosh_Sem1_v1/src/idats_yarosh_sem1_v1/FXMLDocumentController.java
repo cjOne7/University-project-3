@@ -30,6 +30,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import kolekce.*;
 import sprava.*;
+import therapist_data.TherapistDataListener;
 
 public class FXMLDocumentController implements Initializable {
 
@@ -39,12 +40,7 @@ public class FXMLDocumentController implements Initializable {
     private static final int RECT_WIDTH = 30;
     private static final int RECT_HEIGHT = 30;
 
-    private final AnchorPane bgForDialog = new AnchorPane();
     private Therapist therapist = Therapist.EMPTY_THERAPIST;
-    private String name = "";
-    private String surname = "";
-    private Integer workFrom = WorkHours.STANDARD_WORK_HOURS.getBeginOfWorkDay();
-    private Integer workTo = WorkHours.STANDARD_WORK_HOURS.getEndOfWorkDay();
     private Rectangle[][] rects;
     private ObservableList<Term> terms = FXCollections.observableArrayList();
     private AbstrDoubleList<Term> listOfTerms = new AbstrDoubleList<>();
@@ -72,59 +68,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void enterTerapeutData(ActionEvent event) {
-        Dialog<ButtonType> inputDialog = new Dialog<>(); //create dialog
-
-        bgForDialog.setPrefSize(300, 240);//set dialog size
-        inputDialog.getDialogPane().setContent(bgForDialog);
-        inputDialog.setTitle("Therapist name and working hours");
-
-        createLabels(); //create a group of labels
-        List<TextField> textFields = createTextFields();//create a group of text fields
-
-        inputDialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);//add to the dialog 2 buttons
-
-        inputDialog.showAndWait().filter(bType -> bType == ButtonType.OK).ifPresent(t -> {
-            name = textFields.get(0).getText();
-            surname = textFields.get(1).getText();
-            try {
-                if (!textFields.get(2).getText().isEmpty()) {
-                    workFrom = Integer.parseInt(textFields.get(2).getText());
-                }
-                if (!textFields.get(3).getText().isEmpty()) {
-                    workTo = Integer.parseInt(textFields.get(3).getText());
-                }
-            } catch (NumberFormatException e) {
-                repeatInput(event, "Error", "Wrong number format", Alert.AlertType.ERROR);
-            }
-            if (!isInDayInterval(workFrom) || !isInDayInterval(workTo) || workFrom > workTo) {
-                workFrom = WorkHours.STANDARD_WORK_HOURS.getBeginOfWorkDay();
-                repeatInput(event, "Error", "Unexisting hours", Alert.AlertType.ERROR);
-            } else if (name.isEmpty() || surname.isEmpty()) {
-                repeatInput(event, "Empty fields", "You have one or more blank fields. Please, fill them.",
-                        Alert.AlertType.INFORMATION);
-            } else {
-                therapist = new Therapist(new Person(name, surname), new WorkHours(workFrom, workTo));
-                showLabelWithWorkingHours();
-            }
-        });
-    }
-
-    private boolean isInDayInterval(final int hour) {
-        return hour >= 0 && hour < 24;
-    }
-
-    private void repeatInput(
-            final ActionEvent event,
-            final String titleText,
-            final String contextText,
-            final Alert.AlertType alertType) {
-        callAlertWindow(titleText, contextText, alertType);
-        enterTerapeutData(event);
-    }
-
-    private void showLabelWithWorkingHours() {
-        labelForWorkHours.setText(
-                String.format("Therapist is working from %d to %d hours.", workFrom, workTo));
+        TherapistDataListener tdl = new TherapistDataListener();
+        tdl.workWithTherapistData();
+        therapist = tdl.getTherapist();
+        labelForWorkHours.setText(String.format("Therapist is working from %d to %d hours.", 
+                therapist.getWorkHours().getBeginOfWorkDay(), therapist.getWorkHours().getEndOfWorkDay()));
         labelForWorkHours.setVisible(true);
     }
 
@@ -138,36 +86,6 @@ public class FXMLDocumentController implements Initializable {
         alert.setContentText(contextText);
         alert.showAndWait();
         return alert;
-    }
-
-    private TextField createTextField(
-            final double topIndentation,
-            final double leftIndentation,
-            final String text) {
-        TextField textField = new TextField(text);
-        AnchorPane.setTopAnchor(textField, topIndentation);
-        AnchorPane.setLeftAnchor(textField, leftIndentation);
-        bgForDialog.getChildren().add(textField);
-        return textField;
-    }
-
-    private List<TextField> createTextFields() {
-        return Arrays.asList(
-                createTextField(50.0, 100.0, name),
-                createTextField(90.0, 100.0, surname),
-                createTextField(130.0, 100.0, workFrom.toString()),
-                createTextField(170.0, 100.0, workTo.toString()));
-    }
-
-    private Label createLabel(
-            final String text,
-            final double topIndentation,
-            final double leftIndentation) {
-        Label label = new Label(text);
-        AnchorPane.setTopAnchor(label, topIndentation);
-        AnchorPane.setLeftAnchor(label, leftIndentation);
-        bgForDialog.getChildren().add(label);
-        return label;
     }
 
     private Label createLabel(
@@ -189,13 +107,6 @@ public class FXMLDocumentController implements Initializable {
         label.setAlignment(Pos.CENTER_LEFT);
         paneForDates.getChildren().add(label);
         return label;
-    }
-
-    private void createLabels() {
-        createLabel("Name:", 55.0, 10.0);
-        createLabel("Surname:", 95.0, 10.0);
-        createLabel("Work from:", 135.0, 10.0);
-        createLabel("Work to:", 175.0, 10.0);
     }
 
     private Rectangle createRect(
