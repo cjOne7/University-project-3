@@ -1,9 +1,10 @@
-package terapie;
+package therapy;
 
 import java.time.*;
 import java.util.Random;
 import javafx.scene.control.DatePicker;
 import kolekce.AbstrDoubleList;
+//The engine of this generator is MAGIC. Don't change anything!
 
 public class GenerateTerms {
 
@@ -79,7 +80,7 @@ public class GenerateTerms {
         listOfTerms.zrus();
         long rows = Math.abs(datePickerTo.getValue().toEpochDay() - datePickerFrom.getValue().toEpochDay()) + 1;
         int columns = pracovniDoba.getDurOfWorkDay();
-        isBusy = new boolean[(int) rows][columns];
+        isBusy = new boolean[columns][(int) rows];
 
         for (int i = 0; i < numberOfTerms; i++) {
             if (isAnyFreeSpace()) {
@@ -87,7 +88,7 @@ public class GenerateTerms {
             }
             Term termin = generateTerm(datePickerFrom, datePickerTo, pracovniDoba);
             long row = Math.abs(termin.getStart().toLocalDate().toEpochDay() - datePickerFrom.getValue().toEpochDay());
-            int column = termin.getStart().getHour() - pracovniDoba.getBeginOfWorkDay();
+            int column = Math.abs(termin.getStart().getHour() - pracovniDoba.getBeginOfWorkDay());
             while (true) {
                 if (isFreeSpace(column, row)) {
                     isBusy[column][(int) row] = true;
@@ -100,7 +101,7 @@ public class GenerateTerms {
                 } else {
                     termin = generateTerm(datePickerFrom, datePickerTo, pracovniDoba);
                     row = Math.abs(termin.getStart().toLocalDate().toEpochDay() - datePickerFrom.getValue().toEpochDay());
-                    column = termin.getStart().getHour() - pracovniDoba.getBeginOfWorkDay();
+                    column = Math.abs(termin.getStart().getHour() - pracovniDoba.getBeginOfWorkDay());
                 }
             }
             listOfTerms.vlozPosledni(termin);
@@ -127,5 +128,8 @@ public class GenerateTerms {
     public boolean[][] getIsBusy() {
         return isBusy;
     }
-}
 
+    public void setIsBusy(boolean[][] isBusy) {
+        this.isBusy = isBusy;
+    }
+}

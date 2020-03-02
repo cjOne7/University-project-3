@@ -1,8 +1,8 @@
 package util;
 
 import java.time.LocalDateTime;
-import terapie.WorkHours;
-import terapie.Term;
+import therapy.WorkHours;
+import therapy.Term;
 
 public class MaticeObsazenosti implements Matice{
 

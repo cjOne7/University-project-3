@@ -1,4 +1,4 @@
-package terapie;
+package therapy;
 
 import java.io.Serializable;
 

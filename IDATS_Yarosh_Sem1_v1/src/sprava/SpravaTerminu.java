@@ -13,20 +13,23 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import terapie.Therapist;
-import terapie.Therapy;
-import terapie.Term;
-import terapie.DurOfTherapy;
+import therapy.Therapist;
+import therapy.Therapy;
+import therapy.Term;
+import therapy.DurOfTherapy;
 import util.MaticeObsazenosti;
 import util.Obdobi;
 import kolekce.*;
+import therapy.GenerateTerms;
 
 public class SpravaTerminu implements Sprava {
 
-    private AbstrDoubleList<Term> seznamTerminu;
+    private AbstrDoubleList<Term> listOfTerms;
     private Therapist terapeut;
     private Consumer<String> alert;
     private Consumer<String> logger;
+    
+    private GenerateTerms generateTerms = new GenerateTerms();
 
     private final Consumer<String> NULL_CONSUMER = s -> {
     };
@@ -35,7 +38,7 @@ public class SpravaTerminu implements Sprava {
             final Therapist terapeut,
             final Consumer<String> alert,
             final Consumer<String> logger) {
-        this.seznamTerminu = new AbstrDoubleList<>();
+        this.listOfTerms = new AbstrDoubleList<>();
         this.terapeut = (terapeut == null) ? Therapist.EMPTY_THERAPIST : terapeut;
         this.alert = (alert == null) ? NULL_CONSUMER : alert;
         this.logger = (alert == null) ? NULL_CONSUMER : logger;
@@ -78,36 +81,13 @@ public class SpravaTerminu implements Sprava {
     }
 
     @Override
-    public void uloz(String soubor) throws SpravceException {
-        Objects.requireNonNull(seznamTerminu);
-        try (ObjectOutputStream objectOutputStream
-                = new ObjectOutputStream(new FileOutputStream(soubor))) {
-            objectOutputStream.writeInt(seznamTerminu.getMohutnost());
-            Iterator<Term> it = seznamTerminu.iterator();
-            while (it.hasNext()) {
-                objectOutputStream.writeObject(it.next());
-            }
-        } catch (IOException ex) {
-            new SpravceException("File " + soubor + " do not exist");
-        }
+    public void uloz(String fileName) throws SpravceException {
+        Serializer.saveBinary(listOfTerms, fileName, generateTerms.getIsBusy());
     }
 
     @Override
-    public void nacti(String soubor) throws SpravceException {
-        Objects.requireNonNull(seznamTerminu);
-        zrus();
-        try (ObjectInputStream objectInputStream
-                = new ObjectInputStream(new FileInputStream(soubor))) {
-            int size = objectInputStream.readInt();
-            for (int i = 0; i < size; i++) {
-                Term prvek = (Term) objectInputStream.readObject();
-                seznamTerminu.vlozPosledni(prvek);
-            }
-        } catch (IOException ex) {
-            new SpravceException("File " + soubor + " do not exist");
-        } catch (ClassNotFoundException ex) {
-            new SpravceException("Class not found");
-        }
+    public void nacti(String fileName) throws SpravceException {
+        Serializer.loadBinary(listOfTerms, fileName, generateTerms);
     }
 
     @Override
@@ -117,7 +97,7 @@ public class SpravaTerminu implements Sprava {
 
     @Override
     public void zrus() {
-        seznamTerminu.zrus();
+        listOfTerms.zrus();
     }
 
     @Override

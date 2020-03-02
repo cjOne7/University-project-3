@@ -8,10 +8,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-import terapie.Therapist;
-import terapie.Therapy;
-import terapie.Term;
-import terapie.DurOfTherapy;
+import therapy.Therapist;
+import therapy.Therapy;
+import therapy.Term;
+import therapy.DurOfTherapy;
 import util.DateTimeUtil;
 
 /**

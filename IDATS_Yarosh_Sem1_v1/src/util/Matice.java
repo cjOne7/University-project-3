@@ -1,8 +1,8 @@
 package util;
 
-import terapie.WorkHours;
+import therapy.WorkHours;
 import java.time.LocalDateTime;
-import terapie.Term;
+import therapy.Term;
 
 public interface Matice {
 

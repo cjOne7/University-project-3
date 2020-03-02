@@ -1,4 +1,4 @@
-package terapie;
+package therapy;
 
 public class WorkHours {
 

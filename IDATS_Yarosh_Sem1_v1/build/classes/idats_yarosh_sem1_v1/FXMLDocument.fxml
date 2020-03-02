@@ -25,7 +25,7 @@
     <RowConstraints maxHeight="395.6000122070312" minHeight="10.0" prefHeight="73.66668701171875" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <ListView fx:id="listView" prefHeight="668.0" prefWidth="750.0" style="-fx-background-color: #32F3ED; -fx-border-style: #505050;" GridPane.rowIndex="1" />
+      <ListView fx:id="listView" prefHeight="668.0" prefWidth="750.0" style="-fx-background-color: #32F3ED;" GridPane.rowIndex="1" />
       <FlowPane alignment="CENTER_LEFT" hgap="10.0" prefHeight="73.0" prefWidth="773.0" style="-fx-background-color: #DA7878;" vgap="10.0" GridPane.rowIndex="2">
          <children>
             <Label text="From">
@@ -50,15 +50,15 @@
                <font>
                   <Font name="SimSun" size="14.0" />
                </font></Button>
-            <Button mnemonicParsing="false" text="Save">
+            <Button mnemonicParsing="false" onAction="#saveTerms" text="Save">
                <font>
                   <Font name="Sitka Small" size="14.0" />
                </font></Button>
-            <Button mnemonicParsing="false" text="Read">
+            <Button mnemonicParsing="false" onAction="#loadTerms" text="Load">
                <font>
                   <Font name="Tempus Sans ITC" size="14.0" />
                </font></Button>
-            <Button mnemonicParsing="false" text="Clear">
+            <Button mnemonicParsing="false" onAction="#clearTerms" text="Clear">
                <font>
                   <Font name="Microsoft YaHei Light" size="14.0" />
                </font></Button>
@@ -87,19 +87,19 @@
                   <Font name="Copperplate Gothic Light" size="16.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="First">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#findFirstTerm" prefWidth="100.0" text="First">
                <font>
                   <Font name="Berlin Sans FB" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Next">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#findNextTerm" prefWidth="100.0" text="Next">
                <font>
                   <Font name="Algerian" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Previous">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#findPreviousTerm" prefWidth="100.0" text="Previous">
                <font>
                   <Font name="Agency FB" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Last">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#findLastTerm" prefWidth="100.0" text="Last">
                <font>
                   <Font name="MS Reference Sans Serif" size="15.0" />
                </font></Button>
@@ -115,23 +115,23 @@
                <font>
                   <Font name="Lucida Bright Italic" size="15.0" />
                </font></Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="First">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteFirstTerm" prefWidth="100.0" text="First">
                <font>
                   <Font name="Castellar" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Actual">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteActualTerm" prefWidth="100.0" text="Actual">
                <font>
                   <Font name="Century" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Next">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteNextTerm" prefWidth="100.0" text="Next">
                <font>
                   <Font name="Century Gothic" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Previous">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deletePreviousTerm" prefWidth="100.0" text="Previous">
                <font>
                   <Font name="Comic Sans MS" size="15.0" />
                </font></Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefWidth="100.0" text="Last">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#deleteLastTerm" prefWidth="100.0" text="Last">
                <font>
                   <Font name="Kristen ITC" size="15.0" />
                </font></Button>

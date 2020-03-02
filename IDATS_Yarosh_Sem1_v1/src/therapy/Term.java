@@ -1,4 +1,4 @@
-package terapie;
+package therapy;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -45,10 +45,9 @@ public class Term implements Serializable {
 
     @Override
     public String toString() {
-        return "Term:"
-                + "\n\ttherapy: " + therapy
-                + ",\n\tduration of therapy: " + durOfTherapy
-                + ",\n\tstart of therapy: " + start.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))
-                + ",\n\tend of therapy: " + end.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
+        return "Therapy: " + therapy
+                + ", duration of therapy: " + durOfTherapy
+                + ", start of therapy: " + start.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"))
+                + ", end of therapy: " + end.format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss"));
     }
 }
