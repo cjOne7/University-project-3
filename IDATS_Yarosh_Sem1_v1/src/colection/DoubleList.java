@@ -1,4 +1,4 @@
-package kolekce;
+package colection;
 
 import java.util.NoSuchElementException;
 import java.util.stream.Stream;

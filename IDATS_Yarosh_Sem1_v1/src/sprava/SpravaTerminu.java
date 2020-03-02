@@ -1,5 +1,6 @@
 package sprava;
 
+import colection.AbstrDoubleList;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,13 +14,12 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import therapist_data.Therapist;
+import therapistData.Therapist;
 import therapy.Therapy;
 import therapy.Term;
 import therapy.DurOfTherapy;
 import util.MaticeObsazenosti;
 import util.Obdobi;
-import kolekce.*;
 import therapy.GenerateTerms;
 
 public class SpravaTerminu implements Sprava {

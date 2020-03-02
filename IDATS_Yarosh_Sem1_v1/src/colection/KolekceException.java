@@ -1,4 +1,4 @@
-package kolekce;
+package colection;
 
 /**
  *

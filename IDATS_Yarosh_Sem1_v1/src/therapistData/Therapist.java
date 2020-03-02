@@ -1,4 +1,4 @@
-package therapist_data;
+package therapistData;
 
 public class Therapist {
 

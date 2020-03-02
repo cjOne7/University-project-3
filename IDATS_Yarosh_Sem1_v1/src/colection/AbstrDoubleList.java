@@ -1,4 +1,4 @@
-package kolekce;
+package colection;
 
 import java.io.Serializable;
 import java.util.Iterator;

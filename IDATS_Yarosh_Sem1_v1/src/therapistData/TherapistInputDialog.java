@@ -1,4 +1,4 @@
-package therapist_data;
+package therapistData;
 
 import idats_yarosh_sem1_v1.FXMLDocumentController;
 import java.util.Arrays;
@@ -10,7 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class TherapistDataListener {
+public class TherapistInputDialog {
 
     private final AnchorPane bgForDialog = new AnchorPane();
     private String name = "";

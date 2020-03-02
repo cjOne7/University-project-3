@@ -1,15 +1,13 @@
 package idats_yarosh_sem1_v1;
 
+import colection.AbstrDoubleList;
+import colection.KolekceException;
 import therapy.Term;
-import therapist_data.Therapist;
-import therapist_data.WorkHours;
+import therapistData.Therapist;
 import therapy.GenerateTerms;
-import therapist_data.Person;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,19 +16,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import kolekce.*;
 import sprava.*;
-import therapist_data.TherapistDataListener;
+import therapistData.TherapistInputDialog;
 
 public class FXMLDocumentController implements Initializable {
 
@@ -64,14 +58,15 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         datePickerFrom.setValue(LocalDate.now());
         datePickerTo.setValue(LocalDate.now().plusDays(7));
+        numberOfTerms.setText("10");
     }
 
     @FXML
     private void enterTerapeutData(ActionEvent event) {
-        TherapistDataListener tdl = new TherapistDataListener();
+        TherapistInputDialog tdl = new TherapistInputDialog();
         tdl.workWithTherapistData();
         therapist = tdl.getTherapist();
-        labelForWorkHours.setText(String.format("Therapist is working from %d to %d hours.", 
+        labelForWorkHours.setText(String.format("Therapist is working from %d to %d hours.",
                 therapist.getWorkHours().getBeginOfWorkDay(), therapist.getWorkHours().getEndOfWorkDay()));
         labelForWorkHours.setVisible(true);
     }
@@ -157,7 +152,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void generateTerms(ActionEvent event) {
-        int countOfTerms = 0;
+        int countOfTerms;
         try {
             countOfTerms = Integer.parseInt(numberOfTerms.getText());
         } catch (NumberFormatException e) {
@@ -223,11 +218,6 @@ public class FXMLDocumentController implements Initializable {
             listView.getSelectionModel().selectFirst();
             actualTerm = listView.getSelectionModel().getSelectedItem();
             listOfTerms.zpristupniPrvni();
-            while (listOfTerms.zpristupniAktualni() != actualTerm) {
-                listOfTerms.zpristupniNaslednika();
-            }
-            System.out.println(actualTerm);
-            System.out.println(listOfTerms.zpristupniAktualni());
         } else {
             callAlertWindow("Empty list", "You have empty list of terms", Alert.AlertType.INFORMATION);
         }
@@ -238,12 +228,7 @@ public class FXMLDocumentController implements Initializable {
         if (!listView.getSelectionModel().getSelectedItems().isEmpty()) {
             listView.getSelectionModel().select(listView.getSelectionModel().getSelectedIndex() + 1);
             actualTerm = listView.getSelectionModel().getSelectedItem();
-            listOfTerms.zpristupniPrvni();
-            while (listOfTerms.zpristupniAktualni() != actualTerm) {
-                listOfTerms.zpristupniNaslednika();
-            }
-            System.out.println(actualTerm);
-            System.out.println(listOfTerms.zpristupniAktualni());
+            listOfTerms.zpristupniNaslednika();
         } else {
             callAlertWindow("Not selected item", "You didn't select any item from list.", Alert.AlertType.INFORMATION);
         }
@@ -258,31 +243,20 @@ public class FXMLDocumentController implements Initializable {
         if (selectedIndex <= 0) {
             listView.getSelectionModel().selectFirst();
             actualTerm = listView.getSelectionModel().getSelectedItem();
-            listOfTerms.zpristupniPosledni();
-            Term tAct = listOfTerms.zpristupniAktualni();
-            while (tAct != actualTerm) {
-                listOfTerms.zpristupniPredchudce();
-                System.out.println(tAct);
-            }
-            System.out.println(actualTerm);
-            System.out.println(listOfTerms.zpristupniAktualni());
+            listOfTerms.zpristupniPrvni();
         } else {
             listView.getSelectionModel().select(selectedIndex);
             actualTerm = listView.getSelectionModel().getSelectedItem();
+            listOfTerms.zpristupniPredchudce();
         }
     }
 
     @FXML
     private void findLastTerm(ActionEvent event) {
-        if (!terms.isEmpty()) {
+        if (!listView.getSelectionModel().getSelectedItems().isEmpty()) {
             listView.getSelectionModel().selectLast();
             actualTerm = listView.getSelectionModel().getSelectedItem();
             listOfTerms.zpristupniPosledni();
-            while (listOfTerms.zpristupniAktualni() != actualTerm) {
-                listOfTerms.zpristupniPredchudce();
-            }
-            System.out.println(actualTerm);
-            System.out.println(listOfTerms.zpristupniAktualni());
         } else {
             callAlertWindow("Empty list", "You have empty list of terms", Alert.AlertType.INFORMATION);
         }
@@ -290,17 +264,39 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void deleteFirstTerm(ActionEvent event) {
-
+        if (!terms.isEmpty()) {
+            terms.remove(0);
+            if (terms.isEmpty()) {
+                return;
+            }
+            actualTerm = terms.get(0);
+            listOfTerms.odeberPrvni();
+        } else {
+            callAlertWindow("Empty list", "You have empty list of terms", Alert.AlertType.INFORMATION);
+        }
     }
 
     @FXML
     private void deleteActualTerm(ActionEvent event) {
-        if (terms.contains(actualTerm)) {
-            terms.remove(actualTerm);
-//            actualTerm = listOfTerms.
-        } else {
-            callAlertWindow("The actual item is not selected", "You didn't have select actual item from list", Alert.AlertType.INFORMATION);
-        }
+//        try {
+//            listOfTerms.zpristupniAktualni();
+//        } catch (KolekceException e) {
+//            return;
+//        }
+//        if (!terms.isEmpty()) {
+//            terms.remove(actualTerm);
+//            if (terms.isEmpty()) {
+//                return;
+//            }
+//            if (listOfTerms.zpristupniAktualni() == null) {
+//                callAlertWindow("The actual item is not selected", "You didn't have select actual item from list", Alert.AlertType.INFORMATION);
+//                return;
+//            }
+//            actualTerm = terms.get(0);
+//            listOfTerms.odeberAktualni();
+//        } else {
+//            callAlertWindow("The actual item is not selected", "You didn't have select actual item from list", Alert.AlertType.INFORMATION);
+//        }
     }
 
     @FXML
@@ -315,6 +311,15 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void deleteLastTerm(ActionEvent event) {
-
+        if (!terms.isEmpty()) {
+            terms.remove(terms.size() - 1);
+            if (terms.isEmpty()) {
+                return;
+            }
+            actualTerm = terms.get(terms.size() - 1);
+            listOfTerms.odeberPosledni();
+        } else {
+            callAlertWindow("Empty list", "You have empty list of terms", Alert.AlertType.INFORMATION);
+        }
     }
 }

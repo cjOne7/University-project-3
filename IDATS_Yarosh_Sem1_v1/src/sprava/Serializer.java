@@ -1,5 +1,6 @@
 package sprava;
 
+import colection.AbstrDoubleList;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -7,7 +8,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Iterator;
 import java.util.Objects;
-import kolekce.*;
 import therapy.GenerateTerms;
 import therapy.Term;
 
