@@ -1,12 +1,16 @@
 package idats_yarosh_sem1_v1;
 
+import therapy.Serializer;
 import colection.AbstrDoubleList;
+import colection.KolekceException;
 import therapy.Term;
 import therapistData.Therapist;
 import therapy.GenerateTerms;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,7 +26,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import sprava.*;
 import therapistData.TherapistInputDialog;
 
 public class FXMLDocumentController implements Initializable {
@@ -30,8 +33,8 @@ public class FXMLDocumentController implements Initializable {
     private static final int HEIGHT_FOR_HORIZONTAL_LABEL = 20;
     private static final int WIDTH_FOR_VERTICAL_LABEL = 40;
     private static final String FILE_NAME_BIN = "Terms.bin";
-    private static final int RECT_WIDTH = 30;
-    private static final int RECT_HEIGHT = 30;
+    private static final int RECT_WIDTH = 26;
+    private static final int RECT_HEIGHT = 26;
 
     private Therapist therapist = Therapist.EMPTY_THERAPIST;
     private Rectangle[][] rects;
@@ -58,6 +61,7 @@ public class FXMLDocumentController implements Initializable {
         datePickerFrom.setValue(LocalDate.now());
         datePickerTo.setValue(LocalDate.now().plusDays(7));
         numberOfTerms.setText("10");
+        listView.setItems(terms);
     }
 
     @FXML
@@ -65,6 +69,9 @@ public class FXMLDocumentController implements Initializable {
         TherapistInputDialog therapistInputDialog = new TherapistInputDialog();
         therapistInputDialog.workWithTherapistData(labelForWorkHours);
         therapist = therapistInputDialog.getTherapist();
+        if (!therapist.getPerson().getName().equals("") && !therapist.getPerson().getSurname().equals("")) {
+            labelForWorkHours.setVisible(true);
+        }
     }
 
     public static Alert callAlertWindow(
@@ -83,7 +90,8 @@ public class FXMLDocumentController implements Initializable {
             final String text,
             final int labelWidth,
             final int labelHeight,
-            final int i, final int j,
+            final int i,
+            final int j,
             final boolean orientation) {
         Label label = new Label(text);
         if (orientation) {
@@ -111,12 +119,6 @@ public class FXMLDocumentController implements Initializable {
         r.setStrokeWidth(2);
         paneForDates.getChildren().add(r);
         return r;
-    }
-
-    private void createShedule() {
-        int rows = (int) Math.abs(datePickerFrom.getValue().toEpochDay() - datePickerTo.getValue().toEpochDay()) + 1;
-        int columns = therapist.getWorkHours().getDurOfWorkDay();
-        drawShedule(columns, rows, datePickerFrom.getValue());
     }
 
     private void drawShedule(final int columns, final int rows, LocalDate todaysDate) {
@@ -155,11 +157,12 @@ public class FXMLDocumentController implements Initializable {
             callAlertWindow("Parsing error", "Wrong format number!", Alert.AlertType.ERROR);
             return;
         }
-        createShedule();
+        int rows = (int) Math.abs(datePickerFrom.getValue().toEpochDay() - datePickerTo.getValue().toEpochDay()) + 1;
+        int columns = therapist.getWorkHours().getDurOfWorkDay();
+        drawShedule(columns, rows, datePickerFrom.getValue());
         listView.getItems().clear();
-        listOfTerms = generateTerms.generateTerms(countOfTerms, therapist.getWorkHours(), datePickerFrom, datePickerTo);
+        listOfTerms = generateTerms.generateTerms(countOfTerms, therapist.getWorkHours(), datePickerFrom.getValue(), datePickerTo.getValue());
         refreshTerms();
-        listView.setItems(terms);
         repaintRects();
     }
 
@@ -182,24 +185,43 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void saveTerms(ActionEvent event) {
-        Serializer.saveBinary(listOfTerms, FILE_NAME_BIN, generateTerms.getIsBusy());
+        if (!terms.isEmpty()) {
+            Serializer.saveBinary(listOfTerms, FILE_NAME_BIN, generateTerms.getIsBusy());
+        } else {
+            callAlertWindow("Empty list", "You have empty list of terms.", Alert.AlertType.INFORMATION);
+        }
     }
 
     @FXML
     private void loadTerms(ActionEvent event) {
         listView.getItems().clear();
         Serializer.loadBinary(listOfTerms, FILE_NAME_BIN, generateTerms);
-        drawShedule(generateTerms.getIsBusy().length, generateTerms.getIsBusy()[0].length, datePickerFrom.getValue());
-        refreshTerms();
-
-        for (Rectangle[] rect : rects) {
-            for (Rectangle rect1 : rect) {
-                rect1.setFill(Color.GREY);
-            }
+        if (!listOfTerms.jePrazdny()) {
+            drawShedule(generateTerms.getIsBusy().length, generateTerms.getIsBusy()[0].length, datePickerFrom.getValue());
+            refreshTerms();
+            repaintRects();
         }
-        repaintRects();
     }
 
+//    private void sortColection(AbstrDoubleList<Term> abstrDoubleList) {
+//        Comparator<Term> comparator = (t1, t2) -> {
+//            int dayOfTerm1 = t1.getStart().getDayOfYear();
+//            int dayOfTerm2 = t2.getStart().getDayOfYear();
+//            return dayOfTerm1 - dayOfTerm2;
+//        };
+//
+//    }
+//
+//    private Term[][] getMatrix(AbstrDoubleList<Term> abstrDoubleList) {
+//        Term[][] matrixOfTerms = new Term[rects.length][rects[0].length];
+//        for (int i = 0; i < abstrDoubleList.getMohutnost(); i++) {
+//            Term term = abstrDoubleList.get(i);
+//            long row = Math.abs(term.getStart().toLocalDate().toEpochDay() - datePickerFrom.getValue().toEpochDay());
+//            int column = Math.abs(term.getStart().getHour() - therapist.getWorkHours().getBeginOfWorkDay());
+//            matrixOfTerms[column][(int) row] = term;
+//        }
+//        return matrixOfTerms;
+//    }
     @FXML
     private void clearTerms(ActionEvent event) {
         listView.getItems().clear();
@@ -210,13 +232,13 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void findFirstTerm(ActionEvent event) {
-        if (!terms.isEmpty()) {
-            listView.getSelectionModel().selectFirst();
-            actualTerm = listView.getSelectionModel().getSelectedItem();
-            listOfTerms.zpristupniPrvni();
-        } else {
+        if (terms.isEmpty()) {
             callAlertWindow("Empty list", "You have empty list of terms.", Alert.AlertType.INFORMATION);
+            return;
         }
+        listView.getSelectionModel().selectFirst();
+        actualTerm = listView.getSelectionModel().getSelectedItem();
+        listOfTerms.zpristupniPrvni();
     }
 
     @FXML
@@ -224,7 +246,11 @@ public class FXMLDocumentController implements Initializable {
         if (!listView.getSelectionModel().getSelectedItems().isEmpty()) {
             listView.getSelectionModel().select(listView.getSelectionModel().getSelectedIndex() + 1);
             actualTerm = listView.getSelectionModel().getSelectedItem();
-            listOfTerms.zpristupniNaslednika();
+            try {
+                listOfTerms.zpristupniNaslednika();
+            } catch (NoSuchElementException | KolekceException e) {
+                listOfTerms.zpristupniPosledni();
+            }
         } else {
             callAlertWindow("Not selected item", "You didn't select any item from list.", Alert.AlertType.INFORMATION);
         }
@@ -234,22 +260,32 @@ public class FXMLDocumentController implements Initializable {
     private void findPreviousTerm(ActionEvent event) {
         if (terms.isEmpty()) {
             callAlertWindow("Not selected item", "You didn't select any item from list.", Alert.AlertType.INFORMATION);
+            return;
         }
         int selectedIndex = listView.getSelectionModel().getSelectedIndex() - 1;
-        if (selectedIndex <= 0) {
-            listView.getSelectionModel().selectFirst();
-            actualTerm = listView.getSelectionModel().getSelectedItem();
-            listOfTerms.zpristupniPrvni();
+        Term term = listView.getSelectionModel().getSelectedItem();
+        if (term != null) {
+            if (selectedIndex <= 0) {
+                listView.getSelectionModel().selectFirst();
+                actualTerm = listView.getSelectionModel().getSelectedItem();
+                listOfTerms.zpristupniPrvni();
+            } else {
+                listView.getSelectionModel().select(selectedIndex);
+                actualTerm = listView.getSelectionModel().getSelectedItem();
+                try {
+                    listOfTerms.zpristupniPredchudce();
+                } catch (KolekceException e) {
+                    listOfTerms.zpristupniPrvni();
+                }
+            }
         } else {
-            listView.getSelectionModel().select(selectedIndex);
-            actualTerm = listView.getSelectionModel().getSelectedItem();
-            listOfTerms.zpristupniPredchudce();
+            callAlertWindow("Not selected item", "You didn't select any item from list.", Alert.AlertType.INFORMATION);
         }
     }
 
     @FXML
     private void findLastTerm(ActionEvent event) {
-        if (!listView.getSelectionModel().getSelectedItems().isEmpty()) {
+        if (!terms.isEmpty()) {
             listView.getSelectionModel().selectLast();
             actualTerm = listView.getSelectionModel().getSelectedItem();
             listOfTerms.zpristupniPosledni();
@@ -286,17 +322,73 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void deleteActualTerm(ActionEvent event) {
-//        callAlertWindow("The actual item is not selected", "You didn't have select actual item from list", Alert.AlertType.INFORMATION);
+        actualTerm = listView.getSelectionModel().getSelectedItem();
+        if (actualTerm != null) {
+            adjustActualElement(actualTerm);
+            terms.remove(actualTerm);
+            listView.refresh();
+            repaintDeletedRects(actualTerm);
+            listOfTerms.odeberAktualni();
+        } else {
+            callAlertWindow("The actual item is not selected", "You didn't select actual item from list", Alert.AlertType.INFORMATION);
+        }
+    }
+
+    public void adjustActualElement(final Term element) {
+        try {
+            Term term = listOfTerms.zpristupniPrvni();
+            Iterator<Term> it = listOfTerms.iterator();
+            while (it.hasNext()) {
+                if (term.equals(element)) {
+                    break;
+                }
+                term = listOfTerms.zpristupniNaslednika();
+            }
+        } catch (KolekceException ex) {
+            callAlertWindow("Actual element is null", "Your actual element has null value.", Alert.AlertType.ERROR);
+        } catch (NoSuchElementException ex) {
+            callAlertWindow("Element is absent", "You have null element.", Alert.AlertType.ERROR);
+        }
     }
 
     @FXML
     private void deleteNextTerm(ActionEvent event) {
-
+        Term lastTerm = terms.get(terms.size() - 1);
+        if (listView.getSelectionModel().getSelectedItem().equals(lastTerm)) {
+            callAlertWindow("Next element is absent", "You can't delete next element from list.", Alert.AlertType.INFORMATION);
+            return;
+        }
+        listView.getSelectionModel().selectNext();
+        actualTerm = listView.getSelectionModel().getSelectedItem();
+        if (actualTerm != null) {
+            adjustActualElement(actualTerm);
+            terms.remove(actualTerm);
+            listView.refresh();
+            repaintDeletedRects(actualTerm);
+            listOfTerms.odeberAktualni();
+        } else {
+            callAlertWindow("The actual item is not selected", "You didn't select actual item from list.", Alert.AlertType.INFORMATION);
+        }
     }
 
     @FXML
     private void deletePreviousTerm(ActionEvent event) {
-
+        Term firstTerm = terms.get(0);
+        if (listView.getSelectionModel().getSelectedItem().equals(firstTerm)) {
+            callAlertWindow("Previous element is absent", "You can't delete previous element from list.", Alert.AlertType.INFORMATION);
+            return;
+        }
+        listView.getSelectionModel().selectPrevious();
+        actualTerm = listView.getSelectionModel().getSelectedItem();
+        if (actualTerm != null) {
+            adjustActualElement(actualTerm);
+            terms.remove(actualTerm);
+            listView.refresh();
+            repaintDeletedRects(actualTerm);
+            listOfTerms.odeberAktualni();
+        } else {
+            callAlertWindow("The actual item is not selected", "You didn't select actual item from list", Alert.AlertType.INFORMATION);
+        }
     }
 
     @FXML

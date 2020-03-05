@@ -457,21 +457,35 @@ public class AbstrDoubleListTest {
         instance.odeberNaslednika();
         assertEquals(data[0], instance.zpristupniAktualni());
     }
+
     @Test
     public void testOdeberNaslednika6() {
         System.out.println("odeberNaslednika6");
-        AbstrDoubleList instance = new AbstrDoubleList();
-        for (Integer data1 : data) {
-            instance.vlozPosledni(data1);
-        }
+        AbstrDoubleList<Integer> instance = new AbstrDoubleList<>();
+        instance.vlozPrvni(10);
+        instance.zpristupniPosledni();
+        instance.vlozNaslednika(20);
+        instance.vlozPredchudce(30);
+        instance.vlozNaslednika(40);
+        instance.vlozPredchudce(50);
         instance.zpristupniPrvni();
-        instance.zpristupniNaslednika();
-        instance.zpristupniNaslednika();
+        int[] expResult = {50, 10, 40, 20};
+        int[] result = {
+            instance.odeberNaslednika(),
+            instance.odeberNaslednika(),
+            instance.odeberNaslednika(),
+            instance.odeberNaslednika()
+        };
+        assertArrayEquals(expResult, result);
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testOdeberNaslednika7() {
+        System.out.println("odeberNaslednika7");
+        AbstrDoubleList<Integer> instance = new AbstrDoubleList<>();
+        instance.vlozPrvni(10);
         instance.odeberNaslednika();
-        instance.odeberPredchudce();
-        instance.odeberNaslednika();
-        instance.odeberPredchudce();
-        assertEquals(data[2], instance.zpristupniAktualni());
+        fail();
     }
 
     @Test(expected = NoSuchElementException.class)
@@ -531,6 +545,15 @@ public class AbstrDoubleListTest {
         assertEquals(data[4], instance.zpristupniAktualni());
     }
 
+    @Test(expected = NoSuchElementException.class)
+    public void testOdeberPredchudce6() {
+        System.out.println("odeberPredchudce6");
+        AbstrDoubleList instance = new AbstrDoubleList();
+        instance.vlozPosledni(10);
+        instance.odeberPredchudce();
+        fail();
+    }
+    
     @Test
     public void testIterator1() {
         System.out.println("iterator1");
@@ -553,24 +576,22 @@ public class AbstrDoubleListTest {
         }
     }
 
-    @Test
+    @Test(expected = NoSuchElementException.class)
     public void testIterator3() {
         System.out.println("iterator3");
-        Integer[] expectedData = new Integer[]{10, 20, 30, 40};
-        AbstrDoubleList instance = new AbstrDoubleList();
+        AbstrDoubleList<Integer> instance = new AbstrDoubleList<>();
         for (Integer data1 : data) {
-            instance.vlozPosledni(data1);
+            instance.vlozPrvni(data1);
         }
-        Iterator result = instance.iterator();
-        while (result.hasNext()) {
-            result.next();
+        Iterator<Integer> it = instance.iterator();
+        while (it.hasNext()) {
+            Integer next = it.next();
         }
-        result.remove();
-        result = instance.iterator();
-        int i = 0;
-        while (result.hasNext()) {
-            assertEquals(result.next(), expectedData[i++]);
+        it.remove();
+        it = instance.iterator();
+        for (int i = 0; i < 5; i++) {
+            Integer next = it.next();
         }
-        assertEquals(4, instance.getMohutnost());
+        fail();
     }
 }

@@ -69,16 +69,17 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
         isActualNull("Actual element is null");
         if (actual == tail) {
             vlozPosledni(data);
-        }
-        Node nextNode = actual.next;
-        Node newNode = new Node(data, nextNode, actual);
-        actual.next = newNode;
-        if (nextNode == null) {
-            tail = newNode;
         } else {
-            nextNode.prev = newNode;
+            Node nextNode = actual.next;
+            Node newNode = new Node(data, nextNode, actual);
+            actual.next = newNode;
+            if (nextNode == null) {
+                tail = newNode;
+            } else {
+                nextNode.prev = newNode;
+            }
+            size++;
         }
-        size++;
     }
 
     @Override
@@ -87,16 +88,17 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
         isActualNull("Actual element is null");
         if (actual == head) {
             vlozPrvni(data);
-        }
-        Node prevNode = actual.prev;
-        Node newNode = new Node(data, actual, prevNode);
-        actual.prev = newNode;
-        if (prevNode == null) {
-            head = newNode;
         } else {
-            prevNode.next = newNode;
+            Node prevNode = actual.prev;
+            Node newNode = new Node(data, actual, prevNode);
+            actual.prev = newNode;
+            if (prevNode == null) {
+                head = newNode;
+            } else {
+                prevNode.next = newNode;
+            }
+            size++;
         }
-        size++;
     }
 
     @Override
@@ -196,9 +198,12 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
     @Override
     public T odeberNaslednika() throws KolekceException, NoSuchElementException {
         isEmptyListNSEE("Enmpty list");
+        if (head.next == null) {
+            throw new NoSuchElementException("List contains only one element.");
+        }
         isActualNull("Actual element is null");
         if (actual.next == null) {
-            throw new NoSuchElementException("Next element is null");
+            throw new NoSuchElementException("Next element is null.");
         }
         if (head == tail) {
             T element = head.element;
@@ -214,21 +219,14 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
             size--;
             return element;
         }
-//        final T element = actual.next.element;
-//        if (head.next == tail) {
-//            actual.next = null;
-//            tail = actual;
-//        } else {
-//            actual.next.next.prev = actual;
-//            actual.next = actual.next.next;
-//        }
-//        size--;
-//        return element;
     }
 
     @Override
     public T odeberPredchudce() throws KolekceException, NoSuchElementException {
         isEmptyListNSEE("Enmpty list");
+        if (tail.prev == null) {
+            throw new NoSuchElementException("List contains only one element.");
+        }
         isActualNull("Actual element is null");
         if (actual.prev == null) {
             throw new NoSuchElementException("Previous element is null");
@@ -297,6 +295,48 @@ public class AbstrDoubleList<T> implements DoubleList<T>, Serializable {
         node.element = null;
         actual = head;
         size--;
+    }
+
+    public T get(final int index) {
+        checkElementIndex(index);
+        if (index < (size >> 1)) {
+            Node x = head;
+            for (int i = 0; i < index; i++) {
+                x = x.next;
+            }
+            return x.element;
+        } else {
+            Node x = tail;
+            for (int i = size - 1; i > index; i--) {
+                x = x.prev;
+            }
+            return x.element;
+        }
+    }
+
+    public boolean remove(Object o) {
+        if (o == null) {
+            for (Node x = head; x != null; x = x.next) {
+                if (x.element == null) {
+                    unlink(x);
+                    return true;
+                }
+            }
+        } else {
+            for (Node x = head; x != null; x = x.next) {
+                if (o.equals(x.element)) {
+                    unlink(x);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private void checkElementIndex(int index) {
+        if (!(index >= 0 && index < size)) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
     }
 
     private void isEmptyListNSEE(final String message) {

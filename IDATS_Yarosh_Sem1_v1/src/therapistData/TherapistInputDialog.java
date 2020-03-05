@@ -13,8 +13,8 @@ import javafx.scene.layout.AnchorPane;
 public class TherapistInputDialog {
 
     private final AnchorPane bgForDialog = new AnchorPane();
-    private String name = "";
-    private String surname = "";
+    private static String name = "";
+    private static String surname = "";
     private Integer workFrom = WorkHours.STANDARD_WORK_HOURS.getBeginOfWorkDay();
     private Integer workTo = WorkHours.STANDARD_WORK_HOURS.getEndOfWorkDay();
     private Therapist therapist = Therapist.EMPTY_THERAPIST;
@@ -54,7 +54,6 @@ public class TherapistInputDialog {
             }
             label.setText(String.format("Therapist is working from %d to %d hours.",
                     therapist.getWorkHours().getBeginOfWorkDay(), therapist.getWorkHours().getEndOfWorkDay()));
-            label.setVisible(true);
         });
     }
 

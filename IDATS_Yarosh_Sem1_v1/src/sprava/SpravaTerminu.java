@@ -1,5 +1,6 @@
 package sprava;
 
+import therapy.Serializer;
 import colection.AbstrDoubleList;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,10 +11,7 @@ import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Iterator;
-import java.util.Objects;
 import java.util.function.Consumer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import therapistData.Therapist;
 import therapy.Therapy;
 import therapy.Term;
@@ -28,7 +26,7 @@ public class SpravaTerminu implements Sprava {
     private Therapist terapeut;
     private Consumer<String> alert;
     private Consumer<String> logger;
-    
+
     private GenerateTerms generateTerms = new GenerateTerms();
 
     private final Consumer<String> NULL_CONSUMER = s -> {
@@ -46,9 +44,7 @@ public class SpravaTerminu implements Sprava {
 
     @Override
     public void vlozTermin(Term termin) throws SpravceException {
-        if (jeVolno(termin.getStart(), termin.getEnd())) {
-
-        }
+        listOfTerms.vlozPosledni(termin);
     }
 
     @Override
@@ -107,6 +103,7 @@ public class SpravaTerminu implements Sprava {
 
     @Override
     public void generuj(Obdobi obdobi, int pocetTerapii) {
+        generateTerms.generateTerms(pocetTerapii, terapeut.getWorkHours(), obdobi.getDatumOdKdy(), obdobi.getDatumDoKdy());
     }
 
     @Override

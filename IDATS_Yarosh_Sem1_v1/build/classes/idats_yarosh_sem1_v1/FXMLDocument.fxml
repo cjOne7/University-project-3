@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idats_yarosh_sem1_v1.FXMLDocumentController">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1386.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idats_yarosh_sem1_v1.FXMLDocumentController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="886.4000244140625" minWidth="10.0" prefWidth="739.4" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="495.199951171875" minWidth="10.0" prefWidth="117.80000000000007" />
-    <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="495.199951171875" minWidth="10.0" prefWidth="310.6666381835937" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="495.199951171875" minWidth="10.0" prefWidth="86.39999999999998" />
+    <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="543.1999999999999" minWidth="10.0" prefWidth="487.19999999999993" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="665.200048828125" minHeight="10.0" prefHeight="61.73333053588867" vgrow="SOMETIMES" />
@@ -77,7 +77,7 @@
             <Label fx:id="labelForWorkHours" prefHeight="18.0" prefWidth="267.0" visible="false" />
          </children>
       </FlowPane>
-      <FlowPane alignment="TOP_CENTER" hgap="20.0" prefHeight="690.0" prefWidth="100.0" style="-fx-background-color: #ffb266;" vgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <FlowPane alignment="TOP_CENTER" hgap="20.0" prefHeight="690.0" prefWidth="120.0" style="-fx-background-color: #ffb266;" vgap="10.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" text="Browsing:">
                <FlowPane.margin>
@@ -143,8 +143,8 @@
          </GridPane.margin>
       </Pane>
       <Pane prefHeight="73.0" prefWidth="162.0" style="-fx-background-color: #DA7878;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Pane prefHeight="73.0" prefWidth="332.0" style="-fx-background-color: #DA7878;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+      <Pane prefHeight="73.0" prefWidth="1230.0" style="-fx-background-color: #DA7878;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
       <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #37E683;" GridPane.columnIndex="1" />
-      <Pane prefHeight="61.0" prefWidth="355.0" style="-fx-background-color: #37E683;" GridPane.columnIndex="2" />
+      <Pane prefHeight="61.0" prefWidth="906.0" style="-fx-background-color: #37E683;" GridPane.columnIndex="2" />
    </children>
 </GridPane>
