@@ -10,13 +10,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
-public class IDATS_Yarosh_Sem1_v1 extends Application {
+public final class IdatsYaroshSem1 extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+    public void start(final Stage stage) throws Exception {
+        final Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
 
-        Scene scene = new Scene(root);
+        final Scene scene = new Scene(root);
         stage.setOnCloseRequest((event) -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Exiting");

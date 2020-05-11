@@ -1,6 +1,6 @@
 package therapistData;
 
-public class Person {
+public final class Person {
 
     private String name;
     private String surname;

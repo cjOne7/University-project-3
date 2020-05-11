@@ -1,6 +1,6 @@
 package therapistData;
 
-public class WorkHours {
+public final class WorkHours {
 
     public static final WorkHours STANDARD_WORK_HOURS = new WorkHours(8, 16);
 
@@ -24,9 +24,6 @@ public class WorkHours {
         return endOfWorkDay - beginOfWorkDay;
     }
 
-//    public boolean jeVDobe(final int hour) {
-//        return beginOfWorkDay <= hour && hour <= endOfWorkDay;
-//    }
     @Override
     public String toString() {
         return "Working day starts at: " + beginOfWorkDay + "h, end at: " + endOfWorkDay + "h.";

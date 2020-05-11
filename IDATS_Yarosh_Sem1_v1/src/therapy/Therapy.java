@@ -2,23 +2,22 @@ package therapy;
 
 import java.io.Serializable;
 
-public enum Therapy implements Serializable{
-    HYPOTERAPIE("Hypoterapie"),
-    CANISTERAPIE("Canisterapie"),
-    ARTETERAPIE("Arteterapie"),
-    MUZIKOTERAPIE("Muzikoterapie"),
-    AQUATERAPIE("Aquaterapie"),
-    REFLEXTERAPIE("Reflexoterapie");
-    
-    private final String nazev;
+public enum Therapy implements Serializable {
+    HIPPOTHERAPY("Hippotherapy"),
+    CANISTHERAPY("Canistherapy"),
+    ART_THERAPY("Art therapy"),
+    MUSIC_THERAPY("Music therapy"),
+    AQUATHERAPY("Aquatherapy"),
+    REFLEXTHERAPY("Reflextherapy");
 
-    private Therapy(String nazev) {
-        this.nazev = nazev;
+    private final String name;
+
+    private Therapy(final String name) {
+        this.name = name;
     }
 
     @Override
     public String toString() {
-        return nazev;
+        return name;
     }
-
 }

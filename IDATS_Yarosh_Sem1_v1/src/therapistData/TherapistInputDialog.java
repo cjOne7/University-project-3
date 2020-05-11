@@ -10,14 +10,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
-public class TherapistInputDialog {
+public final class TherapistInputDialog {
 
     private final AnchorPane bgForDialog = new AnchorPane();
     private static String name = "";
     private static String surname = "";
-    private Integer workFrom = WorkHours.STANDARD_WORK_HOURS.getBeginOfWorkDay();
-    private Integer workTo = WorkHours.STANDARD_WORK_HOURS.getEndOfWorkDay();
-    private Therapist therapist = Therapist.EMPTY_THERAPIST;
+    private static Integer workFrom = WorkHours.STANDARD_WORK_HOURS.getBeginOfWorkDay();
+    private static Integer workTo = WorkHours.STANDARD_WORK_HOURS.getEndOfWorkDay();
+    private static Therapist therapist = Therapist.EMPTY_THERAPIST;
 
     public void workWithTherapistData(final Label label) {
         Dialog<ButtonType> inputDialog = new Dialog<>(); //create dialog
